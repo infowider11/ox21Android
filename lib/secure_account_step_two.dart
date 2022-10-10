@@ -14,6 +14,7 @@ import 'package:ox21/widgets/appbar.dart';
 import 'package:ox21/widgets/buttons.dart';
 import 'package:ox21/widgets/custom_snackbar.dart';
 import 'package:ox21/widgets/customtextfield.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class Step_two extends StatefulWidget {
   static const String id = "step2";

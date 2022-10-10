@@ -14,7 +14,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'constants/colors.dart';
 import 'constants/image_urls.dart';
 import 'constants/sized_box.dart';
-
+import 'package:flutter_translate/flutter_translate.dart';
 
 class EntroPage extends StatefulWidget {
   static const String  id="intro";
@@ -44,7 +44,7 @@ class _EntroPageState extends State<EntroPage> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 25.0,),
             child: MainHeadingText(
-              text:'0x21 combines the latest in decentralized\ncommunication, payments and file sharing ',
+              text:translate("intro.title1"),
               textAlign: TextAlign.center,
               fontFamily: 'opensemibold',
               color: MyColors.introparacolor,
@@ -71,7 +71,7 @@ class _EntroPageState extends State<EntroPage> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 20),
             child: MainHeadingText(
-              text:'Using a modern blockchain storage technology as it’s backbone',
+              text:translate("intro.title2"),
               textAlign: TextAlign.center,
               fontFamily: 'opensemibold',
               color: MyColors.introparacolor,
@@ -99,7 +99,7 @@ class _EntroPageState extends State<EntroPage> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 25.0,),
             child: MainHeadingText(
-              text:'0x21 also works through Bluetooth, NFC \n and WiFi',
+              text:translate("intro.title3"),
               textAlign: TextAlign.center,
               fontFamily: 'opensemibold',
               color: MyColors.introparacolor,
@@ -139,7 +139,7 @@ class _EntroPageState extends State<EntroPage> {
                   children: [
 
                     RoundEdgedButton(
-                      text: 'Create a New Account',
+                      text: translate("intro.createButton"),
                       textColor: Colors.white,
                       color: MyColors.primaryColor,
                       borderRadius: 12,
@@ -158,7 +158,7 @@ class _EntroPageState extends State<EntroPage> {
                         Navigator.pushNamed(context, SignInPage.id);
                       },
                       child: ParagraphText(
-                        text: 'Sign in to an Existing account',
+                        text: translate("intro.SignIn"),
                         color: Colors.black,
                         fontSize: 16,
                         fontFamily: 'medium',

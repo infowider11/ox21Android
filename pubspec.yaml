@@ -41,8 +41,6 @@ dependencies:
   country_state_city_picker: ^1.2.8
   flutter_linkify: ^5.0.2
   file_picker: ^4.5.1
-
-
   image_picker: ^0.8.5
   image_cropper: ^1.4.1
   video_thumbnail: ^0.5.0
@@ -58,11 +56,14 @@ dependencies:
   in_app_purchase: ^3.0.6
   flutter_html:
   qr_code_scanner: ^1.0.1
+  flutter_translate: ^4.0.3
 #  flutter_html: ^2.2.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -88,7 +89,7 @@ flutter:
 
   assets:
     - assets/images/
-
+    - assets/i18n/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

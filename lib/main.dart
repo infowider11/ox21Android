@@ -47,6 +47,9 @@ import 'package:ox21/welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'constants/global_constants.dart';
+import 'package:flutter_translate/flutter_translate.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 
 void main() async{
   // print('hi');
@@ -55,8 +58,10 @@ void main() async{
   // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   // // print(sharedPreferences.getString('data'));
   // print('hello');
+  var delegate = await LocalizationDelegate.create(
+      fallbackLocale: 'en', supportedLocales: ['en']);
   //
-  runApp(const MyApp());
+  runApp(LocalizedApp(delegate, MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -65,68 +70,79 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      navigatorKey: MyGlobalKeys.navigatorKey,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home:  SplashScreenPage(),
-      routes: {
-        EntroPage.id:(context)=> EntroPage(),
-        LoginPage.id:(context)=> LoginPage(),
-        RegisterPage.id:(context)=> RegisterPage(),
-        CongratulationsPage.id:(context)=> CongratulationsPage(),
-        // CreatePassword.id:(context)=> CreatePassword(),
-        Step_one.id:(context)=> Step_one(),
-        // Step_two.id:(context)=> Step_two(),
-        SignInPage.id:(context)=> SignInPage(),
-        Select_language.id:(context)=> Select_language(),
-        Select_location.id:(context)=> Select_location(),
-        SelectChannelPage.id:(context)=> SelectChannelPage(),
-        // Home_Page.id:(context)=> Home_Page(),
-        MyStatefulWidget.id:(context)=> MyStatefulWidget(),
-        WalletPage.id:(context)=> WalletPage(),
-        SearchPage.id:(context)=> SearchPage(),
-        ChatPage.id:(context)=> ChatPage(),
-        BTCSendPage.id:(context)=> BTCSendPage(),
-        // SearchDomainPage.id:(context)=> SearchDomainPage(),
-        ScanQRCodePage.id:(context)=> ScanQRCodePage(),
-        ContentCreatorPage.id:(context)=> ContentCreatorPage(),
-        ContentCreatorPostNowPage.id:(context)=> ContentCreatorPostNowPage(),
-        TopBannerBidPage.id:(context)=> TopBannerBidPage(),
-        MySubscribedChannels.id:(context)=> MySubscribedChannels(),
-        MyCoinsPage.id:(context)=> MyCoinsPage(),
-        // Step_nextPage.id:(context)=> Step_nextPage(),
-        // TopBannerLanguagePage.id:(context)=> TopBannerLanguagePage(),
-        // TopBannerBidCountryPage.id:(context)=> TopBannerBidCountryPage(),
-        // top_banner_chennel.id:(context)=> top_banner_chennel(),
-        // Cart.id:(context)=> Cart(),
-        Addtocart.id:(context)=> Addtocart(),
-        SettingsPage.id:(context)=> SettingsPage(),
-        DeleteAccountPage.id:(context)=> DeleteAccountPage(),
-        SplashScreenPage.id:(context)=> SplashScreenPage(),
-        WelcomePage.id:(context)=> WelcomePage(),
-        Upload_Page.id:(context)=> Upload_Page(),
-        // UploadPageView.id:(context)=> UploadPageView(),
-        // Add_Detail_Page.id:(context)=> Add_Detail_Page(),
-        // Add_Description_Page.id:(context)=> Add_Description_Page(),
-        // Set_visibility_Page.id:(context)=> Set_visibility_Page(),
-        // Add_Screenshot_page.id:(context)=> Add_Screenshot_page(),
-        // Select_Audience.id:(context)=> Select_Audience(),
-        My_Videos_Page.id:(context)=> My_Videos_Page(),
-      }
-    );
+    var localizationDelegate = LocalizedApp.of(context).delegate;
+    return LocalizationProvider(
+      state: LocalizationProvider.of(context).state,
+    child: MaterialApp(
+    debugShowCheckedModeBanner: false,
+    localizationsDelegates: [
+    localizationDelegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+    ],
+    supportedLocales: localizationDelegate.supportedLocales,
+    locale: localizationDelegate.currentLocale,
+    navigatorKey: MyGlobalKeys.navigatorKey,
+    title: 'Flutter Demo',
+    theme: ThemeData(
+    // This is the theme of your application.
+    //
+    // Try running your application with "flutter run". You'll see the
+    // application has a blue toolbar. Then, without quitting the app, try
+    // changing the primarySwatch below to Colors.green and then invoke
+    // "hot reload" (press "r" in the console where you ran "flutter run",
+    // or simply save your changes to "hot reload" in a Flutter IDE).
+    // Notice that the counter didn't reset back to zero; the application
+    // is not restarted.
+    primarySwatch: Colors.blue,
+    ),
+    home:  SplashScreenPage(),
+    routes: {
+    EntroPage.id:(context)=> EntroPage(),
+    LoginPage.id:(context)=> LoginPage(),
+    RegisterPage.id:(context)=> RegisterPage(),
+    CongratulationsPage.id:(context)=> CongratulationsPage(),
+    // CreatePassword.id:(context)=> CreatePassword(),
+    Step_one.id:(context)=> Step_one(),
+    // Step_two.id:(context)=> Step_two(),
+    SignInPage.id:(context)=> SignInPage(),
+    Select_language.id:(context)=> Select_language(),
+    Select_location.id:(context)=> Select_location(),
+    SelectChannelPage.id:(context)=> SelectChannelPage(),
+    // Home_Page.id:(context)=> Home_Page(),
+    MyStatefulWidget.id:(context)=> MyStatefulWidget(),
+    WalletPage.id:(context)=> WalletPage(),
+    SearchPage.id:(context)=> SearchPage(),
+    ChatPage.id:(context)=> ChatPage(),
+    BTCSendPage.id:(context)=> BTCSendPage(),
+    // SearchDomainPage.id:(context)=> SearchDomainPage(),
+    ScanQRCodePage.id:(context)=> ScanQRCodePage(),
+    ContentCreatorPage.id:(context)=> ContentCreatorPage(),
+    ContentCreatorPostNowPage.id:(context)=> ContentCreatorPostNowPage(),
+    TopBannerBidPage.id:(context)=> TopBannerBidPage(),
+    MySubscribedChannels.id:(context)=> MySubscribedChannels(),
+    MyCoinsPage.id:(context)=> MyCoinsPage(),
+    // Step_nextPage.id:(context)=> Step_nextPage(),
+    // TopBannerLanguagePage.id:(context)=> TopBannerLanguagePage(),
+    // TopBannerBidCountryPage.id:(context)=> TopBannerBidCountryPage(),
+    // top_banner_chennel.id:(context)=> top_banner_chennel(),
+    // Cart.id:(context)=> Cart(),
+    Addtocart.id:(context)=> Addtocart(),
+    SettingsPage.id:(context)=> SettingsPage(),
+    DeleteAccountPage.id:(context)=> DeleteAccountPage(),
+    SplashScreenPage.id:(context)=> SplashScreenPage(),
+    WelcomePage.id:(context)=> WelcomePage(),
+    Upload_Page.id:(context)=> Upload_Page(),
+    // UploadPageView.id:(context)=> UploadPageView(),
+    // Add_Detail_Page.id:(context)=> Add_Detail_Page(),
+    // Add_Description_Page.id:(context)=> Add_Description_Page(),
+    // Set_visibility_Page.id:(context)=> Set_visibility_Page(),
+    // Add_Screenshot_page.id:(context)=> Add_Screenshot_page(),
+    // Select_Audience.id:(context)=> Select_Audience(),
+    My_Videos_Page.id:(context)=> My_Videos_Page(),
+    }
+    ));
+    // return
   }
 }
 

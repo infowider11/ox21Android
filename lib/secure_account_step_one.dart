@@ -13,6 +13,7 @@ import 'package:ox21/widgets/CustomTexts.dart';
 import 'package:ox21/widgets/appbar.dart';
 import 'package:ox21/widgets/buttons.dart';
 import 'package:ox21/widgets/customtextfield.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class Step_one extends StatefulWidget {
   static const String id = "step1";
@@ -87,7 +88,7 @@ class _Step_oneState extends State<Step_one> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: ParagraphText(
-                    text: 'Back up Mnemonic phrase',
+                    text: translate("secure_account_step_one.title"),
                     fontSize: 18,
                     fontFamily: 'bold',
                   ),
@@ -97,7 +98,7 @@ class _Step_oneState extends State<Step_one> {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: ParagraphText(
                     text:
-                        'These 12 words are your mnemonic phrase. They are the key to your wallet. Write it down on a paper and keep it in a safe place. You\'ll be asked to re-enter this phrase (in order) on the next step.',
+                    translate("secure_account_step_one.subTitle"),
                     fontSize: 16,
                     fontFamily: 'regular',
                     color: MyColors.textcolor,
@@ -431,14 +432,14 @@ class _Step_oneState extends State<Step_one> {
                                   ),
                                   vSizedBox2,
                                   ParagraphText(
-                                    text: 'Tap to reveal your seed phrase',
+                                    text: translate("secure_account_step_one.tapContainerTitle"),
                                     fontFamily: 'bold',
                                     fontSize: 18,
                                     color: Colors.white,
                                   ),
                                   vSizedBox,
                                   ParagraphText(
-                                    text: 'Make sure no one is watching your screen',
+                                    text: translate("secure_account_step_one.tapContainerSubTitle"),
                                     fontFamily: 'regular',
                                     fontSize: 14,
                                     color: Colors.white,
@@ -460,7 +461,7 @@ class _Step_oneState extends State<Step_one> {
             alignment: Alignment.bottomCenter,
             child: RoundEdgedButton(
               verticalMargin: 20,
-              text: 'Continue',
+              text: translate("secure_account_step_one.continueBtn"),
               textColor: Colors.white,
               color:viewVisible?Colors.grey.shade300: MyColors.primaryColor,
               borderRadius: 12,

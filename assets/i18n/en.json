@@ -1,0 +1,50 @@
+{
+  "welcome": {
+    "title": "Welcome to a decentralized future",
+    "subTitle": "Enter the  of internet wherer you utilize its to be",
+    "Go": "Go"
+  },
+  "intro": {
+    "title1": "0x21 combines the latest in decentralized communication, payments and file sharing",
+    "title2":"Using a modern blockchain storage technology as it’s backbone",
+    "title3":"0x21 also works through Bluetooth, NFC  \n and WiFi",
+    "createButton": "Create a New Account",
+    "SignIn": "Sign in to an Existing account"
+  },
+  "secure_account_step_one": {
+    "title": "Back up Mnemonic phrase",
+    "subTitle": "These 12 words are your mnemonic phrase. They are the key to your wallet. Write it down on a paper and keep it in a safe place. You 'll be asked to re-enter this phrase (in order) on the next step.",
+    "tapContainerTitle": "Tap to reveal your seed phrase",
+    "tapContainerSubTitle": "Make sure no one is watching your screen",
+    "continueBtn": "Continue"
+  },
+  "secure_account_step_two": {
+    "title": "Confirm Mnemonic Phrase",
+    "subTitle": "Select each word in the order it was presented to you.",
+    "continueBtn": "Continue",
+    "maximumAttempt": "You have reached maximum attempts limit",
+    "attemptsLeft.": "Selected Words did'nt match. 1 attempts left."
+  },
+  "createPassword": {
+    "title": "Create Password",
+    "subTitle": "This password will unlock your OX21 account only on this service.",
+    "newPassword": "New Password",
+    "passStrength": "Password strength:",
+    "confirmPassword": "Confirm password",
+    "passValidation": "Must be at least 8 characters",
+    "signInToggle": "Sign in with Face ID/Touch ID?",
+    "checkboxText": "I understand that OX21 cannot recover this password for me.",
+    "learnMore": "Learn more",
+    "tipText": "Strong Password Tips",
+    "tip1": "Use at least 8 characters—the more characters, the better.",
+    "tip2": "A mixture of both uppercase and lowercase letters.",
+    "tip3": "A mixture of letters and numbers.",
+    "tip4": "Inclusion of at least one special character, e.g., ! @ # ? ]",
+    "alertMsgTerms": "Please accept terms and conditions",
+    "alertStrongPassword": "Please type the strong password",
+    "alertMsgConfrimPass": "Confirm password does not match",
+    "alertPass": "Selected Words did'nt match. $noOfAttemptsLeft attempts left."
+
+
+  }
+}
