@@ -46,6 +46,7 @@ import 'package:ox21/walletpage.dart';
 import 'package:ox21/welcome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'choose_lang.dart';
 import 'constants/global_constants.dart';
 
 void main() async{
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: MyGlobalKeys.navigatorKey,
-      title: 'Flutter Demo',
+      title: '',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -81,7 +82,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:  SplashScreenPage(),
+      home:  ChooseLanguage(),
       routes: {
         EntroPage.id:(context)=> EntroPage(),
         LoginPage.id:(context)=> LoginPage(),
@@ -125,6 +126,7 @@ class MyApp extends StatelessWidget {
         // Add_Screenshot_page.id:(context)=> Add_Screenshot_page(),
         // Select_Audience.id:(context)=> Select_Audience(),
         My_Videos_Page.id:(context)=> My_Videos_Page(),
+        // ChooseLanguage.id:(context)=> ChooseLanguage(),
       }
     );
   }
