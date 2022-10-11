@@ -22,6 +22,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:uuid/uuid.dart';
 
 import 'constants/getStrengthColor.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class CreatePassword extends StatefulWidget {
   static const String id = "createpasswordpage";
@@ -86,7 +87,7 @@ class _CreatePasswordState extends State<CreatePassword> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: ParagraphText(
-                            text: 'Create Password',
+                            text:translate("createPassword.title"),
                             fontSize: 18,
                             fontFamily: 'bold',
                           ),
@@ -96,7 +97,8 @@ class _CreatePasswordState extends State<CreatePassword> {
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: ParagraphText(
                             text:
-                                'This password will unlock your OX21 account only on this service.',
+                            translate("createPassword.subTitle"),
+                                // 'This password will unlock your OX21 account only on this service.',
                             fontSize: 16,
                             fontFamily: 'regular',
                             color: MyColors.textcolor,
@@ -107,7 +109,9 @@ class _CreatePasswordState extends State<CreatePassword> {
                           padding:
                               EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                           child: CustomTextFieldlabel(
-                            labeltext: 'New Password',
+                            labeltext: translate("createPassword.newPassword"),
+                            // 'New Password',
+
                             controller: passwordController,
                             obscureText: !passVisible,
                             hintText: '********',
@@ -168,7 +172,8 @@ class _CreatePasswordState extends State<CreatePassword> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               ParagraphText(
-                                text: 'Password strength: ',
+                                text: translate("createPassword.passStrength"),
+                                // 'Password strength: ',
                                 color: MyColors.textcolor,
                                 fontSize: 12,
                                 fontFamily: 'regular',
@@ -190,7 +195,8 @@ class _CreatePasswordState extends State<CreatePassword> {
                           padding:
                               EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                           child: CustomTextFieldlabel(
-                            labeltext: 'Confirm password',
+                            labeltext: translate("createPassword.confirmPassword"),
+                            // 'Confirm password',
                             controller: confirmpasswordController,
                             hintText: '********',
                             obscureText: true,
@@ -215,7 +221,8 @@ class _CreatePasswordState extends State<CreatePassword> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               ParagraphText(
-                                text: 'Must be at least 8 characters',
+                                text:translate("createPassword.passValidation"),
+                                // 'Must be at least 8 characters',
                                 color: MyColors.textcolor,
                                 fontSize: 12,
                                 fontFamily: 'regular',
@@ -230,7 +237,8 @@ class _CreatePasswordState extends State<CreatePassword> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 16.0),
                                   child: ParagraphText(
-                                    text: 'Sign in with Face ID/Touch ID?',
+                                    text: translate("createPassword.signInToggle"),
+                                    // 'Sign in with Face ID/Touch ID?',
                                     fontFamily: 'medium',
                                     fontSize: 18,
                                     color: MyColors.primaryColor,
@@ -287,10 +295,11 @@ class _CreatePasswordState extends State<CreatePassword> {
                                         ),
                                         children: [
                                           TextSpan(
-                                              text:
-                                                  "I understand that OX21 cannot recover this password for me."),
+                                              text:translate("createPassword.checkboxText")),
+                                                  // "I understand that OX21 cannot recover this password for me."),
                                           TextSpan(
-                                            text: " Learn more",
+                                            text: translate("createPassword.learnMore"),
+                                            // " Learn more",
                                             style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline,),
                                             recognizer: new TapGestureRecognizer()..onTap = ()async{
                                               // if (!await launch(MyGlobalConstants.termsAndConditionsLink)) throw 'Could not launch ${MyGlobalConstants.termsAndConditionsLink}';
@@ -308,7 +317,8 @@ class _CreatePasswordState extends State<CreatePassword> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: ParagraphText(
-                            text: 'Strong Password Tips',
+                            text: translate("createPassword.tipText"),
+                            // 'Strong Password Tips',
                             color: MyColors.primaryColor,
                             fontSize: 12,
                             fontFamily: 'bold',
@@ -330,8 +340,8 @@ class _CreatePasswordState extends State<CreatePassword> {
                                   ),
                                   Expanded(
                                     child: ParagraphText(
-                                      text:
-                                          'Use at least 8 characters—the more characters, the better.',
+                                      text:translate("createPassword.tip1"),
+                                          // 'Use at least 8 characters—the more characters, the better.',
                                       color: MyColors.bulletcolor,
                                       fontSize: 12,
                                     ),
@@ -349,8 +359,8 @@ class _CreatePasswordState extends State<CreatePassword> {
                                   ),
                                   Expanded(
                                     child: ParagraphText(
-                                      text:
-                                          'A mixture of both uppercase and lowercase letters.',
+                                      text:translate("createPassword.tip2"),
+                                          // 'A mixture of both uppercase and lowercase letters.',
                                       color: MyColors.bulletcolor,
                                       fontSize: 12,
                                     ),
@@ -368,7 +378,8 @@ class _CreatePasswordState extends State<CreatePassword> {
                                   ),
                                   Expanded(
                                     child: ParagraphText(
-                                      text: 'A mixture of letters and numbers.',
+                                      text:translate("createPassword.tip3"),
+                                      // 'A mixture of letters and numbers.',
                                       color: MyColors.bulletcolor,
                                       fontSize: 12,
                                     ),
@@ -386,8 +397,8 @@ class _CreatePasswordState extends State<CreatePassword> {
                                   ),
                                   Expanded(
                                     child: ParagraphText(
-                                      text:
-                                          'Inclusion of at least one special character, e.g., ! @ # ? ]',
+                                      text:translate("createPassword.tip4"),
+                                          // 'Inclusion of at least one special character, e.g., ! @ # ? ]',
                                       color: MyColors.bulletcolor,
                                       fontSize: 12,
                                     ),
@@ -402,7 +413,8 @@ class _CreatePasswordState extends State<CreatePassword> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             RoundEdgedButton(
-                              text: 'Create password',
+                              text: translate("createPassword.title"),
+                              // 'Create password',
                               textColor: Colors.white,
                               color: MyColors.primaryColor,
                               borderRadius: 12,
@@ -451,19 +463,24 @@ class _CreatePasswordState extends State<CreatePassword> {
                                       }
                                     } else {
                                       showSnackbar(
-                                          context, 'Please accept terms and conditions');
+                                          context, translate("createPassword.alertMsgTerms")
+                                          // 'Please accept terms and conditions'
+                                      );
                                     }
                                   } else {
-                                    showSnackbar(context,
-                                        'Please type the strong password');
+                                    showSnackbar(context,translate("createPassword.alertStrongPassword")
+                                        // 'Please type the strong password'
+                                    );
                                   }
                                 } else {
                                   if (passwordController.text.length > 7)
-                                    showSnackbar(context,
-                                        'Confirm password does not match');
+                                    showSnackbar(context,translate("createPassword.alertMsgConfrimPass")
+                                        // 'Confirm password does not match'
+                                    );
                                   else {
-                                    showSnackbar(context,
-                                        'The Password must have at least 8 characters');
+                                    showSnackbar(context,translate("createPassword.alert")
+                                        // 'The Password must have at least 8 characters'
+                                    );
                                   }
                                 }
                                 setState(() {

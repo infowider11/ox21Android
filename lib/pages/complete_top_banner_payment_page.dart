@@ -11,6 +11,7 @@ import 'package:ox21/widgets/appbar.dart';
 import 'package:ox21/widgets/buttons.dart';
 import 'package:ox21/widgets/custom_snackbar.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class CompleteTopBannerPaymentPage extends StatefulWidget {
   final Map<String,dynamic> purchaseData;
@@ -38,13 +39,13 @@ class _CompleteTopBannerPaymentPageState extends State<CompleteTopBannerPaymentP
 
       timestamp = timestamp-1000;
       Duration duration = DateTime.fromMicrosecondsSinceEpoch(timestamp).difference(DateTime.now());
-      timeLeft = '${duration.inDays} day, ${duration.inHours - duration.inDays*24} hours, ${duration.inMinutes - duration.inHours*60} minutes, ${duration.inSeconds - duration.inMinutes*60} seconds left';
+      timeLeft = '${duration.inDays} ${translate("complete_domain_purchase_page.day")}, ${duration.inHours - duration.inDays*24} ${translate("complete_domain_purchase_page.hours")}, ${duration.inMinutes - duration.inHours*60} ${translate("complete_domain_purchase_page.minutes")}, ${duration.inSeconds - duration.inMinutes*60} ${translate("complete_domain_purchase_page.seconds")}';
 
       setState(() {
 
       });
       if(duration.inSeconds<=0){
-        showSnackbar(MyGlobalKeys.navigatorKey.currentContext!, 'Purchase timeout.');
+        showSnackbar(MyGlobalKeys.navigatorKey.currentContext!,translate("complete_top_banner_payment_page.purchaseOut"));
         pushReplacement(context: MyGlobalKeys.navigatorKey.currentContext!, screen: MyStatefulWidget());
       }
     });
@@ -69,7 +70,7 @@ class _CompleteTopBannerPaymentPageState extends State<CompleteTopBannerPaymentP
   Widget build(BuildContext context) {
     print('the qr data is : bitcoin:11PEEokWFSFNYshLfuLvZfMuPE93aMJd4?amount=${double.parse(widget.purchaseData['price'].toString()).toStringAsFixed(2)}${widget.purchaseData['orderID']}}');
     return Scaffold(
-      appBar: appBar(context: context, title: 'Rent Top Banner'),
+      appBar: appBar(context: context, title: translate("complete_top_banner_payment_page.rentBanner")),
 
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -80,13 +81,13 @@ class _CompleteTopBannerPaymentPageState extends State<CompleteTopBannerPaymentP
             children: [
               Center(child: Image.asset(MyImages.buyTopBannerImage, width: MediaQuery.of(context).size.width,)),
               vSizedBox,
-              SubHeadingText(text: 'This banner is for rent.',),
+              SubHeadingText(text: translate("complete_top_banner_payment_page.text1"),),
               vSizedBox,
-              ParagraphText(text: '  ORDER ID: ${widget.purchaseData['orderID']}', fontSize: 16,),
+              ParagraphText(text: '   translate("complete_top_banner_payment_page.orderId") ${widget.purchaseData['orderID']}', fontSize: 16,),
               vSizedBox05,
-              ParagraphText(text: '  COST: ${double.parse(widget.purchaseData['price'].toString()).toStringAsFixed(2)}  BTC', fontSize: 16,),
+              ParagraphText(text: ' translate("complete_top_banner_payment_page.cost") ${double.parse(widget.purchaseData['price'].toString()).toStringAsFixed(2)}  BTC', fontSize: 16,),
               vSizedBox2,
-              SubHeadingText(text: 'QR code use for payment',),
+              SubHeadingText(text: translate("complete_top_banner_payment_page.Qrpay"),),
               vSizedBox4,
               Center(
                 child: Stack(
@@ -109,9 +110,9 @@ class _CompleteTopBannerPaymentPageState extends State<CompleteTopBannerPaymentP
                 ),
               ),
               vSizedBox,
-              Center(child: ParagraphText(text: 'Updated on ${DateTime.parse(widget.purchaseData['updated_at']??'${DateTime.now().toString()}').toString()}', textAlign: TextAlign.center,)),
+              Center(child: ParagraphText(text: 'translate("complete_top_banner_payment_page.updateOn") ${DateTime.parse(widget.purchaseData['updated_at']??'${DateTime.now().toString()}').toString()}', textAlign: TextAlign.center,)),
               vSizedBox,
-              SubHeadingText(text: 'Strong Note'),
+              SubHeadingText(text:  translate("complete_top_banner_payment_page.strongNote")),
               vSizedBox,
               Row(
                 children: [
@@ -123,7 +124,7 @@ class _CompleteTopBannerPaymentPageState extends State<CompleteTopBannerPaymentP
                       shape: BoxShape.circle,
                     ),),
                   hSizedBox,
-                  ParagraphText(text: 'the order id will expire in 48 hours'),
+                  ParagraphText(text:translate("complete_top_banner_payment_page.text3")),
                 ],
               ),
               Row(
@@ -136,11 +137,11 @@ class _CompleteTopBannerPaymentPageState extends State<CompleteTopBannerPaymentP
                       shape: BoxShape.circle,
                     ),),
                   hSizedBox,
-                  Expanded(child: ParagraphText(text: 'When the orderID expires, the message will show the QR code is no longer valid.')),
+                  Expanded(child: ParagraphText(text: translate("complete_top_banner_payment_page.text4"))),
                 ],
               ),
               vSizedBox4,
-              RoundEdgedButton(text: 'Close', onTap: (){
+              RoundEdgedButton(text: translate("complete_top_banner_payment_page.close"), onTap: (){
                 // Navigator.pop(context);
                 Navigator.pop(MyGlobalKeys.navigatorKey.currentContext!);
               },),

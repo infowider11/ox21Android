@@ -4,7 +4,7 @@ import 'package:ox21/constants/colors.dart';
 import 'package:ox21/constants/sized_box.dart';
 import 'package:ox21/widgets/CustomTexts.dart';
 import 'package:ox21/widgets/appbar.dart';
-
+import 'package:flutter_translate/flutter_translate.dart';
 class Add_Description_Page extends StatefulWidget {
   static const String id="Add_Description_Page";
   final TextEditingController descriptionController;
@@ -18,14 +18,14 @@ class _Add_Description_PageState extends State<Add_Description_Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Add description', titleColor: MyColors.secondary, toolbarHeight: 50, actions: [
+      appBar: appBar(context: context, title: translate("add_description.title"), titleColor: MyColors.secondary, toolbarHeight: 50, actions: [
         TextButton(
             onPressed: () {
               // Navigator.pushNamed(context, Select_Audience.id);
               Navigator.pop(context);
             },
             child: ParagraphText(
-              text: 'Done',
+              text: translate("add_description.done"),
               color: MyColors.secondary,
               fontSize: 16,
               fontFamily: 'semibold',
@@ -48,7 +48,7 @@ class _Add_Description_PageState extends State<Add_Description_Page> {
                 // initialValue: 'description here..',
                 decoration: InputDecoration(
                   // labelText: 'Add description',
-                  hintText: 'Add Description',
+                  hintText: translate("add_description.title"),
                   labelStyle: TextStyle(
                     color: Colors.black,
                   ),

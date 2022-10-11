@@ -10,6 +10,7 @@ import '../../constants/global_constants.dart';
 import '../../services/api_urls.dart';
 import '../../services/webservices.dart';
 import '../../widgets/customLoader.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class PendingGroupMembers extends StatefulWidget {
   final Map groupDetail;
@@ -63,10 +64,10 @@ class _PendingGroupMembersState extends State<PendingGroupMembers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Members'),
+      appBar: appBar(context: context, title:translate("group_members_page.members")),
       body:load?CustomLoader(): Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
-        child: pendingMembers.length==0?Center(child: ParagraphText(text: 'No Pending Request Found',),):ListView.builder(
+        child: pendingMembers.length==0?Center(child: ParagraphText(text: translate("pending_group_members_page.noPendingRequest"),),):ListView.builder(
           itemCount: pendingMembers.length,
           itemBuilder: (context, index){
             return Container(

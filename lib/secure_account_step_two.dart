@@ -91,7 +91,7 @@ class _Step_twoState extends State<Step_two> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: ParagraphText(
-                  text: 'Confirm Mnemonic Phrase',
+                  text: translate("secure_account_step_two.title"),
                   fontSize: 18,
                   fontFamily: 'bold',
                 ),
@@ -109,7 +109,7 @@ class _Step_twoState extends State<Step_two> {
                       padding: const EdgeInsets.symmetric(horizontal: 0.0),
                       child: ParagraphText(
                         text:
-                            'Select each word in the order it was presented to you',
+                        translate("secure_account_step_two.subTitle"),
                         fontSize: 16,
                         fontFamily: 'regular',
                         color: MyColors.blackColor,
@@ -608,7 +608,7 @@ class _Step_twoState extends State<Step_two> {
           Align(
             alignment: Alignment.bottomCenter,
             child: RoundEdgedButton(
-              text: 'Continue',
+              text:translate("secure_account_step_two.continueBtn"),
               textColor: Colors.white,
               verticalMargin: 20,
               color: filledValues.length == 3
@@ -641,11 +641,11 @@ class _Step_twoState extends State<Step_two> {
                 else{
                   noOfAttemptsLeft--;
                   if(noOfAttemptsLeft<=0) {
-                    showSnackbar(context, 'You have reached maximum attempts limit');
+                    showSnackbar(context, translate("secure_account_step_two.maximumAttempt"));
                     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>EntroPage()), (route) => route.isFirst);
                   }
                   else{
-                    showSnackbar(context, 'Selected Words did\'nt match. $noOfAttemptsLeft attempts left.');
+                    showSnackbar(context,translate("secure_account_step_two.attemptsLeft"));
                     setState(() {
                       currentPosition = 0;
                       filledValues.clear();

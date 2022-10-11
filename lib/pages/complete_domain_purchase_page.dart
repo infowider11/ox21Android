@@ -12,6 +12,7 @@ import 'package:ox21/widgets/appbar.dart';
 import 'package:ox21/widgets/buttons.dart';
 import 'package:ox21/widgets/custom_snackbar.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class CompleteDomainPaymentPage extends StatefulWidget {
   final Map<String,dynamic> purchaseData;
@@ -39,13 +40,13 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
 
       timestamp = timestamp-1000;
       Duration duration = DateTime.fromMicrosecondsSinceEpoch(timestamp).difference(DateTime.now());
-      timeLeft = '${duration.inDays} day, ${duration.inHours - duration.inDays*24} hours, ${duration.inMinutes - duration.inHours*60} minutes, ${duration.inSeconds - duration.inMinutes*60} seconds left';
+      timeLeft = '${duration.inDays} ${translate("complete_domain_purchase_page.day")}, ${duration.inHours - duration.inDays*24} ${translate("complete_domain_purchase_page.hours")}, ${duration.inMinutes - duration.inHours*60} ${translate("complete_domain_purchase_page.minutes")}, ${duration.inSeconds - duration.inMinutes*60} ${translate("complete_domain_purchase_page.seconds")}';
 
       setState(() {
 
       });
       if(duration.inSeconds<=0){
-        showSnackbar(MyGlobalKeys.navigatorKey.currentContext!, 'Purchase timeout.');
+        showSnackbar(MyGlobalKeys.navigatorKey.currentContext!,  translate("complete_top_banner_payment_page.purchaseOut"));
         pushReplacement(context: MyGlobalKeys.navigatorKey.currentContext!, screen: MyStatefulWidget());
       }
     });
@@ -70,7 +71,7 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
   Widget build(BuildContext context) {
     print('the qr data is : bitcoin:11PEEokWFSFNYshLfuLvZfMuPE93aMJd4?amount=${double.parse(widget.purchaseData['btc_cost'].toString()).toStringAsFixed(2)}${widget.purchaseData['orderID']}}');
     return Scaffold(
-      appBar: appBar(context: context, title: 'Buy Domain'),
+      appBar: appBar(context: context, title: translate("complete_domain_purchase_page.buyDomain")),
 
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -81,14 +82,14 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
             children: [
               Center(child: Image.asset(MyImages.buyTopBannerImage, width: MediaQuery.of(context).size.width,)),
               vSizedBox,
-              SubHeadingText(text: 'You don’t have enough Ox21 points to purchase this domain, your orderID is ${widget.purchaseData['orderID']}, you can ask your friends to pay for you within 48 hours.',),
+              SubHeadingText(text: '${ translate("complete_domain_purchase_page.text1")} ${widget.purchaseData['orderID']}, ${ translate("complete_domain_purchase_page.text2")}',),
               // SubHeadingText(text: 'Complete your payment to purchase this domain.',),
               vSizedBox,
-              ParagraphText(text: '  ORDER ID: ${widget.purchaseData['orderID']}', fontSize: 16,),
+              ParagraphText(text: ' ${translate("complete_top_banner_payment_page.orderId")} ${widget.purchaseData['orderID']}', fontSize: 16,),
               vSizedBox05,
-              ParagraphText(text: '  COST: ${double.parse(widget.purchaseData['btc_cost'].toString()).toStringAsFixed(2)}  BTC', fontSize: 16,),
+              ParagraphText(text: ' ${translate("complete_top_banner_payment_page.cost")} ${double.parse(widget.purchaseData['btc_cost'].toString()).toStringAsFixed(2)}  BTC', fontSize: 16,),
               vSizedBox2,
-              SubHeadingText(text: 'QR code use for payment',),
+              SubHeadingText(text: translate("complete_top_banner_payment_page.Qrpay"),),
               vSizedBox4,
               Center(
                 child: Stack(
@@ -111,9 +112,9 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
                 ),
               ),
               vSizedBox,
-              Center(child: ParagraphText(text: 'This code will expire on ${DateFormat.yMMMMEEEEd().add_jm().format(DateTime.fromMillisecondsSinceEpoch((widget.purchaseData['expire_time'] * 1000)??'${DateTime.now().toString()}'))}', textAlign: TextAlign.center,)),
+              Center(child: ParagraphText(text: '${translate("complete_domain_purchase_page.text3")} ${DateFormat.yMMMMEEEEd().add_jm().format(DateTime.fromMillisecondsSinceEpoch((widget.purchaseData['expire_time'] * 1000)??'${DateTime.now().toString()}'))}', textAlign: TextAlign.center,)),
               vSizedBox,
-              SubHeadingText(text: 'Strong Note'),
+              SubHeadingText(text:translate("complete_top_banner_payment_page.strongNote")),
               vSizedBox,
               Row(
                 children: [
@@ -125,7 +126,7 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
                       shape: BoxShape.circle,
                     ),),
                   hSizedBox,
-                  ParagraphText(text: 'the order id will expire in 48 hours'),
+                  ParagraphText(text: translate("complete_domain_purchase_page.text4")),
                 ],
               ),
               Row(
@@ -138,11 +139,11 @@ class _CompleteDomainPaymentPageState extends State<CompleteDomainPaymentPage> {
                       shape: BoxShape.circle,
                     ),),
                   hSizedBox,
-                  Expanded(child: ParagraphText(text: 'When the orderID expires, the message will show the QR code is no longer valid.')),
+                  Expanded(child: ParagraphText(text: translate("complete_domain_purchase_page.text5"))),
                 ],
               ),
               vSizedBox4,
-              RoundEdgedButton(text: 'Close', onTap: (){
+              RoundEdgedButton(text: translate("complete_top_banner_payment_page.close"), onTap: (){
                 Navigator.pop(context);
                 Navigator.pop(MyGlobalKeys.navigatorKey.currentContext!);
               },),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ox21/widgets/appbar.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-
+import'package:flutter_translate/flutter_translate.dart';
 class ScanQrToJoinGroupPage extends StatefulWidget {
   const ScanQrToJoinGroupPage({Key? key}) : super(key: key);
 
@@ -54,7 +54,7 @@ class _ScanQrToJoinGroupPageState extends State<ScanQrToJoinGroupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Scan Qr Code'),
+      appBar: appBar(context: context, title: translate("scan_qr_to_join_group_page.title")),
       body: Container(
         child: Column(
           children: [

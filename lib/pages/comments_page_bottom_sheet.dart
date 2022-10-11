@@ -8,6 +8,7 @@ import 'package:ox21/services/webservices.dart';
 import 'package:ox21/widgets/CustomTexts.dart';
 import 'package:ox21/widgets/customLoader.dart';
 import 'package:ox21/widgets/customtextfield.dart';
+import'package:flutter_translate/flutter_translate.dart';
 class CommentsPageInHomeFeed extends StatefulWidget {
   final String postId;
   const CommentsPageInHomeFeed({Key? key, required this.postId}) : super(key: key);
@@ -66,7 +67,7 @@ class _CommentsPageInHomeFeedState extends State<CommentsPageInHomeFeed> {
       Column(
         children: [
           Expanded(
-            child:load?CustomLoader(): comments.length==0?Center(child: ParagraphText(text: 'No Comments Found',),): ListView.builder(
+            child:load?CustomLoader(): comments.length==0?Center(child: ParagraphText(text: translate("comments_page_bottom_sheet.noData"),),): ListView.builder(
               itemCount: comments.length ,
               itemBuilder: (context, index){
                 return Container(
@@ -77,9 +78,9 @@ class _CommentsPageInHomeFeedState extends State<CommentsPageInHomeFeed> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             if(comments[index]['createdBy']!=null)
-                            SubHeadingText(text: '${comments[index]['createdBy']['domain']??'Anonymous'}')
+                            SubHeadingText(text: '${comments[index]['createdBy']['domain']??translate("comments_page_bottom_sheet.anonymous")}')
                             else
-                              SubHeadingText(text: 'Anonymous'),
+                              SubHeadingText(text:translate("comments_page_bottom_sheet.anonymous")),
                             ParagraphText(text: '${comments[index]['message']}'),
                           ],
                         ),
@@ -94,7 +95,7 @@ class _CommentsPageInHomeFeedState extends State<CommentsPageInHomeFeed> {
           ),
           Row(
             children: [
-              Expanded(child: CustomTextField(controller: messageController,hintText: 'Type something here',)),
+              Expanded(child: CustomTextField(controller: messageController,hintText:translate("comments_page_bottom_sheet.typeSome"),)),
               IconButton(
                   onPressed: () async {
                     var request = {

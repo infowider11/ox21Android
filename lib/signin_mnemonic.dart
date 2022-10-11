@@ -25,7 +25,7 @@ import 'package:ox21/widgets/customtextfield.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uuid/uuid.dart';
-
+import'package:flutter_translate/flutter_translate.dart';
 
 class SignInPage extends StatefulWidget {
   static const String id="mnemonic";
@@ -74,7 +74,7 @@ class _SignInPageState extends State<SignInPage> {
                 vSizedBox,
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: ParagraphText(text: 'Sign in with  Mnemonic Phrase',
+                  child: ParagraphText(text: translate("signin_mnemonic.title"),
                     fontSize: 18,
                     fontFamily: 'bold',
                   ),
@@ -95,7 +95,7 @@ class _SignInPageState extends State<SignInPage> {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                       child: CustomTextFieldlabel(
-                        labeltext: 'Mnemonic phrase',
+                        labeltext:translate("signin_mnemonic.mnemonic"),
                         controller: passPhraseController,
                         hintText: 'Enter the 12 Words pass phrase',
                         left: 16,
@@ -122,7 +122,7 @@ class _SignInPageState extends State<SignInPage> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                   child: CustomTextFieldlabel(
-                    labeltext: 'password',
+                    labeltext:translate("signin_mnemonic.password"),
                     controller: passwordcontroller,
                     hintText: '*****',
                     left: 16,
@@ -195,7 +195,7 @@ class _SignInPageState extends State<SignInPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           ParagraphText(
-                            text: 'Must be at least 8 characters',
+                            text: translate("signin_mnemonic.alert"),
                             color: MyColors.textcolor,
                             fontSize: 11,
                             fontFamily: 'regular',
@@ -210,7 +210,7 @@ class _SignInPageState extends State<SignInPage> {
                       child: Padding(
                         padding: const EdgeInsets.only( right: 16),
                         child:ParagraphText(
-                          text: 'Forgot Password?',
+                          text: translate("signin_mnemonic.forgotPass"),
                           color: MyColors.blueColor,
                           fontSize: 11,
                           fontFamily: 'regular',
@@ -225,7 +225,7 @@ class _SignInPageState extends State<SignInPage> {
                         flex:8,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 16.0),
-                          child: ParagraphText(text: 'Sign in with Face ID/Touch ID?', fontFamily: 'medium', fontSize: 18, color: MyColors.primaryColor,),
+                          child: ParagraphText(text: translate("signin_mnemonic.signInToggle"), fontFamily: 'medium', fontSize: 18, color: MyColors.primaryColor,),
                         )
                     ),
 
@@ -259,7 +259,7 @@ class _SignInPageState extends State<SignInPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ParagraphText(
-                      text: 'By proceeding, you agree to these ',
+                      text:translate("signin_mnemonic.text"),
                       color: MyColors.lighttext,
                       fontSize: 12,
                       fontFamily: 'regular',
@@ -271,7 +271,7 @@ class _SignInPageState extends State<SignInPage> {
                         push(context: context, screen: TermsAndConditionsPage());
                       },
                       child: ParagraphText(
-                        text: 'Term and Conditions.',
+                        text: translate("signin_mnemonic.terms"),
                         color: MyColors.primaryColor,
                         fontSize: 12,
                         fontFamily: 'regular',
@@ -281,7 +281,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 vSizedBox2,
                 RoundEdgedButton(
-                  text: 'Sign in',
+                  text: translate("signin_mnemonic.signInBtn"),
                   textColor: Colors.white,
                   color:passPhraseController.text.isNotEmpty && passwordcontroller.text.length>7? MyColors.primaryColor: Colors.grey.shade300,
                   borderRadius: 12,
@@ -294,9 +294,9 @@ class _SignInPageState extends State<SignInPage> {
                     FocusScope.of(context).requestFocus(new FocusNode());
                     List words = passPhraseController.text.split(" ");
                     if(words.length!=12){
-                      showSnackbar(context, 'Mnemonic phrase must be of 12 words');
+                      showSnackbar(context, translate("signin_mnemonic.alert1"));
                     }else if(passwordcontroller.text.length<8){
-                      showSnackbar(context, 'Password must be of at least 8 characters');
+                      showSnackbar(context, translate("signin_mnemonic.alert2"));
                     }else{
                       setState(() {
                         load = true;

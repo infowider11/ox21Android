@@ -11,7 +11,7 @@ import 'package:ox21/widgets/buttons.dart';
 import 'package:ox21/widgets/customLoader.dart';
 import 'package:ox21/widgets/custom_snackbar.dart';
 import 'package:ox21/widgets/customtextfield.dart';
-
+import'package:flutter_translate/flutter_translate.dart';
 class MakePaymentForDomainPage extends StatefulWidget {
   const MakePaymentForDomainPage({Key? key}) : super(key: key);
 
@@ -31,19 +31,19 @@ class _MakePaymentForDomainPageState extends State<MakePaymentForDomainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Make Payment For Domain'),
+      appBar: appBar(context: context, title:translate("make_payment_for_domain_page.title")),
       body: load?CustomLoader():Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SubHeadingText(
-              text: 'Order Id',
+              text: translate("make_payment_for_domain_page.orderID"),
               color: MyColors.primaryColor,
             ),
             CustomTextField(
               controller: orderIdController,
-              hintText: 'Enter order id here',
+              hintText: translate("make_payment_for_domain_page.orderIDPlace"),
               onChanged: (val)async{
                 if(orderIdController.text.length==6){
                   var request = {
@@ -77,18 +77,18 @@ class _MakePaymentForDomainPageState extends State<MakePaymentForDomainPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  ParagraphText(text: 'You Have to pay: '),
-                  SubHeadingText(text: '$amountToPay BTC', color: MyColors.primaryColor,),
+                  ParagraphText(text: translate("make_payment_for_domain_page.pay")),
+                  SubHeadingText(text: '$amountToPay ${translate("make_payment_for_domain_page.btc")}', color: MyColors.primaryColor,),
                 ],
               ),
             vSizedBox2,
             RoundEdgedButton(
-              text: 'Make Payment From Your BTC Wallet',
+              text: translate("make_payment_for_domain_page.makePay"),
               onTap: ()async{
                 if(orderIdController.text==''){
-                  showSnackbar(context, 'Please Enter Order Id to pay for');
+                  showSnackbar(context,translate("make_payment_for_domain_page.enterOrderId"));
                 }else if(orderIdController.text.length!=6){
-                  showSnackbar(context, 'Order Id must be of exactly 6 digits');
+                  showSnackbar(context,translate("make_payment_for_domain_page.validorderId"));
                 }else{
                   var request = {
                     "user_id": userId,

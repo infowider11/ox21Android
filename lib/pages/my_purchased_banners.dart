@@ -25,7 +25,7 @@ import '../upload_video_view.dart';
 import '../widgets/appbar.dart';
 import '../widgets/avatar.dart';
 import '../widgets/customtextfield.dart';
-
+import'package:flutter_translate/flutter_translate.dart';
 class MyPurchasedBanners extends StatefulWidget {
   static const String id = "My_videos_page";
   const MyPurchasedBanners({Key? key}) : super(key: key);
@@ -65,7 +65,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
     });
     var jsonResponse = await Webservices.postDataWithImageFunction(body: request, files: files, context: MyGlobalKeys.navigatorKey.currentContext!, endPoint: ApiUrls.update_banner_image);
     if(jsonResponse['status'] ==1){
-      showSnackbar(MyGlobalKeys.navigatorKey.currentContext!, 'Image Uploaded');
+      showSnackbar(MyGlobalKeys.navigatorKey.currentContext!, translate("my_purchased_banners.imgUploaded"));
       await getBanners();
     }else{
       showSnackbar(MyGlobalKeys.navigatorKey.currentContext!, 'Error ${jsonResponse['message']}');
@@ -90,7 +90,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
       backgroundColor: Color(0xFFeaedf6),
       appBar: appBar(
         context: context,
-        title: 'Your Banners',
+        title: translate("my_purchased_banners.yourBanner"),
         titleColor: MyColors.secondary,
         toolbarHeight: 50,
       ),
@@ -129,7 +129,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         ParagraphText(
-                                          text: 'Page Number',
+                                          text: translate("my_purchased_banners.pageNumber"),
                                         ),
                                         SubHeadingText(
                                           text: '${myBanners[index]['page_number']}',
@@ -142,7 +142,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         ParagraphText(
-                                          text: 'Channel',
+                                          text:  translate("my_purchased_banners.channel"),
                                         ),
                                         ParagraphText(
                                           text: '${myBanners[index]['channel_name']}',
@@ -156,7 +156,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                       children: [
                                         Expanded(
                                           child: ParagraphText(
-                                            text: 'Language',
+                                            text: translate("my_purchased_banners.lang"),
                                           ),
                                         ),
                                         ParagraphText(
@@ -171,7 +171,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                       // crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
                                         ParagraphText(
-                                          text: 'Purchased On',
+                                          text:translate("my_purchased_banners.purchased"),
                                         ),
                                         ParagraphText(
                                           text:
@@ -188,7 +188,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                       // crossAxisAlignment: CrossAxisAlignment.end,
                                       children: [
                                         ParagraphText(
-                                          text: 'Location',
+                                          text:  translate("my_purchased_banners.location")
                                         ),
                                         if(myBanners[index]['city']!=null && myBanners[index]['city']!='null')
                                         ParagraphText(
@@ -196,7 +196,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                           textAlign: TextAlign.end,
                                         )
                                         else
-                                          ParagraphText(text: 'Global')
+                                          ParagraphText(text: translate("my_purchased_banners.global"))
                                       ],
                                     ),
                                     vSizedBox05,
@@ -205,13 +205,13 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         ParagraphText(
-                                          text: 'Banner Content',
+                                          text: translate("my_purchased_banners.bannerContent"),
                                         ),
                                         hSizedBox,
                                         Expanded(
                                           flex: 5,
                                           child: RoundEdgedButton(
-                                            text:myBanners[index]['is_for_sell']==1?'Edit Sale Price' :'Add Sale Price',
+                                            text:myBanners[index]['is_for_sell']==1?translate("my_purchased_banners.edit2") :translate("my_purchased_banners.add2"),
                                             horizontalPadding: 6,
                                             verticalPadding: 4,
                                             height: null,
@@ -240,18 +240,18 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       mainAxisSize: MainAxisSize.min,
                                                       children: [
-                                                        Center(child: SubHeadingText(text: myBanners[index]['is_for_sell']==1?'Edit Resale Price':'Create Resale Price', color: MyColors.primaryColor,)),
+                                                        Center(child: SubHeadingText(text: myBanners[index]['is_for_sell']==1?translate("my_purchased_banners.edit"):translate("my_purchased_banners.create"), color: MyColors.primaryColor,)),
                                                         vSizedBox2,
                                                         SubHeadingText(text: 'Resale Price'),
-                                                        CustomTextField(controller: amountController, hintText: 'Enter resale price', keyboardType: TextInputType.number,),
+                                                        CustomTextField(controller: amountController, hintText: translate("my_purchased_banners.price"), keyboardType: TextInputType.number,),
                                                         vSizedBox2,
                                                         RoundEdgedButton(
-                                                          text: myBanners[index]['is_for_sell']==1?'Edit':'Add',
+                                                          text: myBanners[index]['is_for_sell']==1?translate("my_purchased_banners.edit1"):translate("my_purchased_banners.add1"),
                                                           onTap: ()async{
                                                             FocusScope.of(context).requestFocus(new FocusNode());
                                                             if(amountController.text==''){
 
-                                                              showSnackbar(context, 'Please type valid price.');
+                                                              showSnackbar(context,  translate("my_purchased_banners.validPrice"));
                                                             }else{
                                                               var request = {
                                                                 "user_id":userId,
@@ -291,7 +291,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                             text: myBanners[index]['image']==null?
                                             // myBanners[index]['upload_status']==2?
                                             // 'Uploading...':
-                                            'Upload':'Uploaded',
+                                            translate("my_purchased_banners.Upload"):translate("my_purchased_banners.Uploaded"),
                                             isSolid:myBanners[index]['image']!=null,
                                             height: null,
                                             color:myBanners[index]['image']!=null? MyColors.green:MyColors.primaryColor,
@@ -323,7 +323,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                             children: [
                                                               ParagraphText(
-                                                                text: 'Upload Banner Image/Video',
+                                                                text: translate("my_purchased_banners.uploadBanner"),
                                                                 color: MyColors.secondary,
                                                                 fontSize: 16,
                                                                 fontFamily: 'semibold',
@@ -380,7 +380,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                                                           MainAxisAlignment.spaceBetween,
                                                                           children: [
                                                                             ParagraphText(
-                                                                              text: 'Upload a Image',
+                                                                              text: translate("my_purchased_banners.uploadImg"),
                                                                               color: MyColors.heading,
                                                                               fontSize: 12,
                                                                               fontFamily: 'bold',
@@ -432,7 +432,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                                                           MainAxisAlignment.spaceBetween,
                                                                           children: [
                                                                             ParagraphText(
-                                                                              text: 'Upload a Video',
+                                                                              text: translate("my_purchased_banners.uploadVideo"),
                                                                               color: MyColors.heading,
                                                                               fontSize: 12,
                                                                               fontFamily: 'bold',
@@ -459,7 +459,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                                     ),
                                     vSizedBox,
                                     // if(myBanners[index]['is_for_rent']==0)
-                                    RoundEdgedButton(text:myBanners[index]['is_for_rent']==1?'Open for rent': 'Rent your banner',
+                                    RoundEdgedButton(text:myBanners[index]['is_for_rent']==1?translate("my_purchased_banners.rent"):translate("my_purchased_banners.banner"),
                                       onTap:myBanners[index]['is_for_rent']==0? ()async{
                                       var request = {
                                         'user_id': userId,
@@ -490,7 +490,7 @@ class _MyPurchasedBannersState extends State<MyPurchasedBanners> {
                     else
                       Expanded(
                         child: Center(
-                          child: Text('No Banners Found'),
+                          child: Text(translate("my_purchased_banners.noData")),
                         ),
                       ),
                     vSizedBox,

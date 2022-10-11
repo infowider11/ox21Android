@@ -19,6 +19,7 @@ import 'package:ox21/widgets/custom_snackbar.dart';
 import 'package:ox21/widgets/customtextfield.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
+import'package:flutter_translate/flutter_translate.dart';
 
 class DeleteAccountPage extends StatefulWidget {
   static const String id="delte";
@@ -50,7 +51,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
     return Scaffold(
       backgroundColor: MyColors.backcolor,
       appBar: appBar(context: context,
-          title: 'Delete Account',
+          title:translate("deleteAccount.title"),
           titleColor: MyColors.primaryColor,
           actions: [
             IconButton(onPressed: (){}, icon: Image.asset(MyImages.logowelcom, width: 35, height: 40, fit: BoxFit.fitHeight,))
@@ -92,9 +93,9 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                       child: CustomTextFieldlabel(
-                        labeltext: 'Mnemonic phrase',
+                        labeltext: translate("forgot.mnemonic"),
                         controller: passPhraseController,
-                        hintText: 'Enter the 12 Words pass phrase',
+                        hintText:  translate("forgot.alert1"),
                         left: 16,
                         fontsize: 12,
                         hintcolor: MyColors.inputbordercolor,
@@ -130,7 +131,9 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ParagraphText(
-                      text: 'Once you delete an account, there is no way to recover it\nAre you sure you want to delete your account?',
+                      text:
+                      translate("deleteAccount.alrt1"),
+                      // 'Once you delete an account, there is no way to recover it\nAre you sure you want to delete your account?',
                       color: MyColors.lighttext,
                       fontSize: 12,
                       fontFamily: 'regular',
@@ -139,7 +142,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                 ),
                 vSizedBox2,
                 RoundEdgedButton(
-                  text: 'Delete Account',
+                  text: translate("deleteAccount.title"),
                   textColor: Colors.white,
                   color: Color(0xFFDC2430),
                   borderRadius: 12,
@@ -156,12 +159,12 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                     uuid.v5(Uuid.NAMESPACE_URL, passPhraseController.text);
                     if(words.length!=12){
                       print('the words length is ${words.length}');
-                      showSnackbar(context, 'Mnemonic phrase must be of 12 words');
+                      showSnackbar(context, translate("forgot.alert1"));
                     }else if(typedPhrase!=userData!['uuid']){
-                      showSnackbar(context, 'You have entered wrong Mnemonic phrase');
+                      showSnackbar(context, translate("deleteAccount.alert3"));
                     }else{
                       bool? result = await showCustomConfirmationDialog(
-                          description: 'Once you delete an account, there is no way to recover it.'
+                          description: translate("deleteAccount.alrt2")
                       );
 
                       if(result== true){

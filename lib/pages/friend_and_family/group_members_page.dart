@@ -16,6 +16,8 @@ import '../../constants/global_keys.dart';
 import '../../services/api_urls.dart';
 import '../../services/webservices.dart';
 import '../../widgets/buttons.dart';
+import'package:flutter_translate/flutter_translate.dart';
+
 
 class GroupMembersPage extends StatefulWidget {
   final Map groupDetail;
@@ -69,10 +71,10 @@ class _GroupMembersPageState extends State<GroupMembersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Members'),
+      appBar: appBar(context: context, title:  translate("group_members_page.members")),
       body:load?CustomLoader(): Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
-        child:members.length==0?Center(child: ParagraphText(text: 'No Members Found',),): ListView.builder(
+        child:members.length==0?Center(child: ParagraphText(text: translate("group_members_page.noMember"),),): ListView.builder(
           itemCount: members.length,
           itemBuilder: (context, index){
             return Container(
@@ -88,9 +90,9 @@ class _GroupMembersPageState extends State<GroupMembersPage> {
                         children: [
                           SubHeadingText(text: '${members[index]['nickname']} ',),
                           if(members[index]['is_owner']==1)
-                            SubHeadingText(text: '(Admin)',),
+                            SubHeadingText(text: '(${translate("group_members_page.admin")})',),
                           if(members[index]['user_id'].toString()==userId)
-                            SubHeadingText(text: '(You)',),
+                            SubHeadingText(text: '(${translate("group_members_page.you")})',),
 
                         ],
                       ),),
@@ -121,13 +123,13 @@ class _GroupMembersPageState extends State<GroupMembersPage> {
                                   // mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
 
-                                  SubHeadingText(text: 'Change Nickname'),
+                                  SubHeadingText(text:  translate("group_members_page.changeNName")),
                                     vSizedBox2,
-                                    CustomTextField(controller: nicknameController, hintText: 'Enter new name for ${members[index]['nickname']}'),
+                                    CustomTextField(controller: nicknameController, hintText: '${ translate("group_members_page.enterNewName")} ${members[index]['nickname']}'),
                                     vSizedBox,
-                                    RoundEdgedButton(text: 'Update', onTap: (){
+                                    RoundEdgedButton(text:  translate("group_members_page.update"), onTap: (){
                                       if(nicknameController.text==''){
-                                        showSnackbar(context, 'Name cannot be empty');
+                                        showSnackbar(context,  translate("group_members_page.emptyName"));
                                       }else{
                                         Navigator.pop(context, nicknameController.text);
                                       }
@@ -156,7 +158,7 @@ class _GroupMembersPageState extends State<GroupMembersPage> {
                       // hSizedBox05,
                       if(widget.groupDetail['owner_id'].toString()==userId && members[index]['user_id'].toString()!=userId)
                       IconButton(onPressed: ()async{
-                        bool? result = await showCustomConfirmationDialog(description: 'This user will be removed from your group');
+                        bool? result = await showCustomConfirmationDialog(description:translate("group_members_page.text"));
                         print('the confirmation result is $result');
                         if(result==true){
                           var request = {

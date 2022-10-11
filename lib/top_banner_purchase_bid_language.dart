@@ -21,7 +21,7 @@ import 'constants/global_constants.dart';
 import 'constants/global_functions.dart';
 import 'constants/image_urls.dart';
 import 'constants/sized_box.dart';
-
+import 'package:flutter_translate/flutter_translate.dart';
 class TopBannerLanguagePage extends StatefulWidget {
   static const String id="topbannerlang";
 
@@ -74,7 +74,7 @@ class _TopBannerLanguagePageState extends State<TopBannerLanguagePage> {
       appBar:load
           ? null
           :  appBar(context: context,
-          title: 'Top Banner Purchase/Bid',
+          title: translate("top_banner_purchase_bid_language.title"),
           titleColor: MyColors.primaryColor
       ),
       body: load
@@ -87,7 +87,7 @@ class _TopBannerLanguagePageState extends State<TopBannerLanguagePage> {
               vSizedBox,
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: ParagraphText(text: 'Select Language',
+                child: ParagraphText(text: translate("top_banner_purchase_bid_language.selectLang"),
                   fontSize: 18,
                   fontFamily: 'bold',
                 ),
@@ -97,7 +97,7 @@ class _TopBannerLanguagePageState extends State<TopBannerLanguagePage> {
                 padding:
                 EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                 child: CustomTextFieldlabel(
-                  labeltext: 'Search in languages',
+                  labeltext: translate("top_banner_purchase_bid_language.searchInLang"),
                   controller: searchController,
                   hintText: 'labeltext',
                   left: 16,
@@ -130,7 +130,7 @@ class _TopBannerLanguagePageState extends State<TopBannerLanguagePage> {
                           ))),
                   child: Container(
                     // height: 400,
-                    child:languages.length==0?Center(child: Text('No Languages Found')): ListView.builder(
+                    child:languages.length==0?Center(child: Text(translate("top_banner_purchase_bid_language.noData"))): ListView.builder(
                       itemCount: languages.length,
                       itemBuilder: (context, index) {
                         if(languages[index]['name'].toString().toLowerCase().contains(searchController.text.toLowerCase()))
@@ -188,7 +188,7 @@ class _TopBannerLanguagePageState extends State<TopBannerLanguagePage> {
 
                 vSizedBox2,
                 RoundEdgedButton(
-                  text: 'Continue',
+                  text:translate("Select_location.continueBtn"),
                   textColor: Colors.white,
                   color:selectedLanguage==null?Colors.grey.shade300: MyColors.primaryColor,
                   borderRadius: 12,

@@ -18,7 +18,7 @@ import 'constants/global_constants.dart';
 import 'constants/global_functions.dart';
 import 'constants/image_urls.dart';
 import 'constants/sized_box.dart';
-
+import'package:flutter_translate/flutter_translate.dart';
 class SelectChannelPage extends StatefulWidget {
   static const String id="chennel";
   const SelectChannelPage({Key? key}) : super(key: key);
@@ -80,7 +80,7 @@ class _SelectChannelPageState extends State<SelectChannelPage> {
               vSizedBox,
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: ParagraphText(text: 'Select Channels',
+                child: ParagraphText(text:translate("select_channels.title"),
                   fontSize: 18,
                   fontFamily: 'bold',
                 ),
@@ -92,9 +92,9 @@ class _SelectChannelPageState extends State<SelectChannelPage> {
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
                       child: CustomTextFieldlabel(
-                        labeltext: 'Search in Channels',
+                        labeltext: translate("select_channels.search"),
                         controller: searchController,
-                        hintText: 'Search in channels',
+                        hintText: translate("select_channels.search"),
                         left: 16,
                         fontsize: 12,
                         hintcolor: MyColors.inputbordercolor,
@@ -154,13 +154,13 @@ class _SelectChannelPageState extends State<SelectChannelPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [ 
-                      ParagraphText(text: 'Trending in Daily Lifestyle', fontSize: 16, color: MyColors.primaryColor,),
+                      ParagraphText(text: translate("select_channels.trending"), fontSize: 16, color: MyColors.primaryColor,),
                       vSizedBox,
                       Expanded(
                         child: Container(
                             // height: 600,
                             // margin: EdgeInsets.only(bottom: 40),
-                            child:tempChannels.length==0 ||lengthisZero?Text('No Channels Found', textAlign: TextAlign.center,)
+                            child:tempChannels.length==0 ||lengthisZero?Text(translate("select_channels.noData"), textAlign: TextAlign.center,)
                                 : GridView.builder(
                               physics: BouncingScrollPhysics(),
                               // shrinkWrap: true,
@@ -279,7 +279,7 @@ class _SelectChannelPageState extends State<SelectChannelPage> {
               children: [
                 vSizedBox2,
                 RoundEdgedButton(
-                  text: 'Continue',
+                  text: translate("select_channels.continueBtn"),
                   textColor: Colors.white,
                   color:selectedChannels.length==0?Colors.grey.shade300: MyColors.primaryColor,
                   borderRadius: 12,

@@ -19,7 +19,7 @@ import '../constants/global_functions.dart';
 import '../widgets/appbar.dart';
 import '../widgets/customtextfield.dart';
 import '../widgets/play_video_widget.dart';
-
+import 'package:flutter_translate/flutter_translate.dart';
 class My_Videos_Page extends StatefulWidget {
   static const String id = "My_videos_page";
   const My_Videos_Page({Key? key}) : super(key: key);
@@ -163,7 +163,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
       backgroundColor: Color(0xFFeaedf6),
       appBar: appBar(
           context: context,
-          title: 'Your Videos',
+          title:translate("my_video_page.yourVideos"),
           titleColor: MyColors.secondary,
           // toolbarHeight: 50,
           actions: [
@@ -191,7 +191,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                       child: CustomTextField(
                         bgColor: Colors.white,
                         controller: searchController,
-                        hintText: 'Search by keyword',
+                        hintText:translate("my_video_page.search"),
                         onChanged: (value) {
                           setState(() {
                             count = 0;
@@ -223,7 +223,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                         // hSizedBox,
                         ChoiceChip(
                           label: Text(
-                            'Videos',
+                            translate("my_video_page.videos"),
                             style: TextStyle(color: MyColors.blackColor),
                           ),
                           selected: selectedVideoType == 'videos',
@@ -238,7 +238,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                         hSizedBox,
                         ChoiceChip(
                           label: Text(
-                            'Shorts',
+                            translate("my_video_page.shorts"),
                             style: TextStyle(color: MyColors.blackColor),
                           ),
                           selected: selectedVideoType == 'shorts',
@@ -451,7 +451,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                                                       ['use_points'])==0)
                                                       RoundEdgedButton(
                                                           text:
-                                                              'Add Freshness',
+                                                          translate("my_video_page.addFresh"),
                                                         width: 140,
                                                         isSolid: false,
                                                         verticalPadding: 1,
@@ -460,7 +460,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                                                         onTap: ()async{
                                                             if(userData!['points']<100){
                                                               print(userData!['points']);
-                                                              showSnackbar(context, 'Please Purchase more points to add freshness');
+                                                              showSnackbar(context, translate("my_video_page.alertFresh"));
 
                                                             }else{
 
@@ -471,7 +471,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                                                                   child: Column(
                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                     children: [
-                                                                      SubHeadingText(text: 'Select Freshness that you want to buy'),
+                                                                      SubHeadingText(text: translate("my_video_page.selectFresh")),
                                                                       vSizedBox2,
                                                                       for(int i = 1;i<freshnessList.length;i++)
                                                                         GestureDetector(
@@ -527,7 +527,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                                                               .toString()
                                                               : shorts[index][
                                                           'use_points']
-                                                              .toString()) + ' freshness points added', color: MyColors.green,textAlign: TextAlign.center,),
+                                                              .toString()) + translate("my_video_page.pointAdded"), color: MyColors.green,textAlign: TextAlign.center,),
                                                         )
                                                     ],
                                                   ),
@@ -544,7 +544,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                                                                 : shorts[index][
                                                                         'views']
                                                                     .toString()) +
-                                                            ' views',
+                                                            translate("my_video_page.views"),
                                                         fontSize: 12,
                                                         color: Colors.black
                                                             .withOpacity(0.5),
@@ -585,7 +585,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                                                       ),
                                                       hSizedBox,
                                                       ParagraphText(
-                                                        text: 'Playlist: ' +
+                                                        text: translate("my_video_page.playlist") +
                                                             (selectedVideoType ==
                                                                     'videos'
                                                                 ? myVideos[index]
@@ -610,7 +610,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                                                   Row(
                                                     children: [
                                                       ParagraphText(
-                                                        text: 'Channel: ' +
+                                                        text: translate("my_video_page.channel") +
                                                             (selectedVideoType ==
                                                                     'videos'
                                                                 ? myVideos[index]
@@ -740,7 +740,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                   else
                     Expanded(
                       child: Center(
-                        child: Text('No Videos Found'),
+                        child: Text(translate("my_video_page.noVideos")),
                       ),
                     ),
                   if (count == 0 &&
@@ -750,7 +750,7 @@ class _My_Videos_PageState extends State<My_Videos_Page> {
                               shorts.length != 0)))
                     Expanded(
                       child: Center(
-                        child: Text('No Videos Found'),
+                        child: Text(translate("my_video_page.noVideos")),
                       ),
                     ),
                   vSizedBox,

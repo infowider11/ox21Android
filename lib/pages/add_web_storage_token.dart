@@ -12,7 +12,7 @@ import 'package:ox21/widgets/buttons.dart';
 import 'package:ox21/widgets/customLoader.dart';
 import 'package:ox21/widgets/custom_snackbar.dart';
 import 'package:ox21/widgets/customtextfield.dart';
-
+import 'package:flutter_translate/flutter_translate.dart';
 class AddWebStorageTokenPage extends StatefulWidget {
   const AddWebStorageTokenPage({Key? key}) : super(key: key);
 
@@ -28,19 +28,19 @@ class _AddWebStorageTokenPageState extends State<AddWebStorageTokenPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Add Web Storage Token'),
+      appBar: appBar(context: context, title:translate("add_web_storage_token.title")),
       body: load?CustomLoader():Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SubHeadingText(
-              text: 'Token',
+              text: translate("add_web_storage_token.token"),
               color: MyColors.primaryColor,
             ),
             CustomTextField(
               controller: orderIdController,
-              hintText: 'Enter your token here...',
+              hintText: translate("add_web_storage_token.tokenPlace"),
               maxLines: 4,
               // keyboardType: TextInputType.number,
             ),
@@ -48,10 +48,10 @@ class _AddWebStorageTokenPageState extends State<AddWebStorageTokenPage> {
 
             vSizedBox2,
             RoundEdgedButton(
-              text: 'Add Token',
+              text: translate("add_web_storage_token.addToken"),
               onTap: ()async{
                 if(orderIdController.text==''){
-                  showSnackbar(context, 'Please Enter the token');
+                  showSnackbar(context, translate("add_web_storage_token.alert"));
                 }
                 // else if(orderIdController.text.length!=6){
                 //   showSnackbar(context, 'Order Id must be of exactly 6 digits');

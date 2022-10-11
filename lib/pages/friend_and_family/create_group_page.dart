@@ -15,7 +15,7 @@ import 'package:ox21/widgets/custom_snackbar.dart';
 import 'package:ox21/widgets/customtextfield.dart';
 
 import '../../constants/global_functions.dart';
-
+import 'package:flutter_translate/flutter_translate.dart';
 class CreateGroupPage extends StatefulWidget {
   const CreateGroupPage({Key? key}) : super(key: key);
 
@@ -34,7 +34,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Create Group'),
+      appBar: appBar(context: context, title:translate("create_group_page.createGroup")),
       body:load?CustomLoader(): Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
@@ -42,19 +42,19 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               vSizedBox2,
-              SubHeadingText(text: 'Group Title', color: MyColors.primaryColor,),
+              SubHeadingText(text: translate("create_group_page.groupTitle"), color: MyColors.primaryColor,),
               vSizedBox05,
-              CustomTextField(controller: titleController, hintText: 'Enter Group Name'),
+              CustomTextField(controller: titleController, hintText: translate("create_group_page.groupName")),
               vSizedBox2,
-              SubHeadingText(text: 'Group Description', color: MyColors.primaryColor,),
+              SubHeadingText(text:  translate("create_group_page.groupDes"), color: MyColors.primaryColor,),
               vSizedBox05,
-              CustomTextField(controller: descriptionCOntroller, hintText: 'Type somethings about your group', maxLines: 6,),
+              CustomTextField(controller: descriptionCOntroller, hintText: translate("create_group_page.typeSome"), maxLines: 6,),
               vSizedBox2,
-              SubHeadingText(text: 'Nick Name', color: MyColors.primaryColor,),
+              SubHeadingText(text: translate("create_group_page.nName"), color: MyColors.primaryColor,),
               vSizedBox05,
-              CustomTextField(controller: nickNameController, hintText: 'This will be your name for this group'),
+              CustomTextField(controller: nickNameController, hintText: translate("create_group_page.groupName")),
               vSizedBox2,
-              SubHeadingText(text: 'Group Image', color: MyColors.primaryColor,),
+              SubHeadingText(text: translate("create_group_page.groupImage"), color: MyColors.primaryColor,),
               vSizedBox05,
 
               GestureDetector(
@@ -79,16 +79,16 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
               ),
               vSizedBox4,
               RoundEdgedButton(
-                text: 'Create Group',
+                text: translate("create_group_page.createGroup"),
                 onTap: ()async{
                   if(titleController.text==''){
-                    showSnackbar(context, 'Please enter group title.');
+                    showSnackbar(context, translate("create_group_page.alertGTitle"));
                   }else if(descriptionCOntroller.text==''){
-                    showSnackbar(context, 'Please enter group description.');
+                    showSnackbar(context, translate("create_group_page.alertGDes"));
                   }else if(nickNameController.text==''){
-                    showSnackbar(context, 'Please enter your nickname.');
+                    showSnackbar(context, translate("create_group_page.alertGName"));
                   }else if(image==null){
-                    showSnackbar(context, 'Please select an image.');
+                    showSnackbar(context, translate("create_group_page.alertGImage"));
                   }else{
                     setState(() {
                       load = true;

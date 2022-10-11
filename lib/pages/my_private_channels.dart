@@ -17,7 +17,7 @@ import '../constants/global_functions.dart';
 import '../services/api_urls.dart';
 import '../services/webservices.dart';
 import '../widgets/customLoader.dart';
-
+import'package:flutter_translate/flutter_translate.dart';
 class MyPrivateChannels extends StatefulWidget {
   static const id = 'my_private_channels';
   const MyPrivateChannels({Key? key}) : super(key: key);
@@ -59,7 +59,7 @@ class _MyPrivateChannelsState extends State<MyPrivateChannels> {
           ? null
           : appBar(
           context: context,
-          title: 'My Private Channels',
+          title:translate("my_private_channels.title"),
           titleColor: MyColors.primaryColor),
       body: load
           ? CustomLoader()
@@ -74,11 +74,11 @@ class _MyPrivateChannelsState extends State<MyPrivateChannels> {
                   // vSizedBox2,
                   Row(
                     children: [
-                      MainHeadingText(text: 'My Private Channels'),
+                      MainHeadingText(text: translate("my_private_channels.title")),
                     ],
                   ),
                   vSizedBox2,
-                  RoundEdgedButton(text: 'Create Private Channel', onTap: ()async{
+                  RoundEdgedButton(text: translate("my_private_channels.createPrivate"), onTap: ()async{
                     await push(context: context, screen: CreatePrivateChannel(),);
                     getChannels();
                   },horizontalMargin: 40,),
@@ -134,7 +134,7 @@ class _MyPrivateChannelsState extends State<MyPrivateChannels> {
                           // height: 600,
                           // margin: EdgeInsets.only(bottom: 40),
                           child: myPrivateChannels.length == 0 ? Text(
-                            'No Channels Found',
+                            translate("my_private_channels.noData"),
                             textAlign: TextAlign.center,
                           )
                               : GridView.builder(

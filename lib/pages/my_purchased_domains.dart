@@ -15,7 +15,7 @@ import '../constants/colors.dart';
 import '../constants/global_functions.dart';
 import '../widgets/appbar.dart';
 import '../widgets/customtextfield.dart';
-
+import'package:flutter_translate/flutter_translate.dart';
 class MyPurchasedDomains extends StatefulWidget {
   static const String id = "My_videos_page";
   const MyPurchasedDomains({Key? key}) : super(key: key);
@@ -57,7 +57,7 @@ class _MyPurchasedDomainsState extends State<MyPurchasedDomains> {
       backgroundColor: Color(0xFFeaedf6),
       appBar: appBar(
           context: context,
-          title: 'Your Domains',
+          title:translate("my_purchased_domains.title"),
           titleColor: MyColors.secondary,
           // toolbarHeight: 50,
       ),

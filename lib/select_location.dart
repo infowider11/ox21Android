@@ -19,7 +19,7 @@ import 'constants/global_functions.dart';
 import 'constants/image_urls.dart';
 import 'constants/sized_box.dart';
 import 'package:country_state_city_picker/country_state_city_picker.dart';
-
+import'package:flutter_translate/flutter_translate.dart';
 class Select_location extends StatefulWidget {
   static const String id = "location";
   const Select_location({Key? key}) : super(key: key);
@@ -67,7 +67,7 @@ class _Select_locationState extends State<Select_location> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 16.0),
                             child: ParagraphText(
-                              text: 'Select Location',
+                              text:translate("Select_location.selectLocation"),
                               fontSize: 18,
                               fontFamily: 'bold',
                             ),
@@ -81,7 +81,7 @@ class _Select_locationState extends State<Select_location> {
                                 Navigator.pushReplacementNamed(context, SelectChannelPage.id);
                               },
                               child: SubHeadingText(
-                                text: 'Skip',
+                                text: translate("Select_location.skip"),
                               ),
                             ),
                           )
@@ -175,7 +175,7 @@ class _Select_locationState extends State<Select_location> {
                           apiKey: MyGlobalConstants.kGoogleApiKey,
                           height: 36,
                           placeType: PlaceType.cities,
-                          placeholder: 'Select City, Province, Country',
+                          placeholder:  translate("Select_location.selectText"),
                           onSelected: (place) {
                             print('the place is ${place.fullJSON}');
                             List data = place.fullJSON['description']
@@ -201,7 +201,7 @@ class _Select_locationState extends State<Select_location> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       RoundEdgedButton(
-                        text: 'Continue',
+                        text: translate("Select_location.continueBtn"),
                         textColor: Colors.white,
                         color: cityValue == null
                             ? Colors.grey.shade300

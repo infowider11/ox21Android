@@ -23,6 +23,9 @@ import 'package:ox21/pages/vmails_page.dart';
 import 'package:ox21/widgets/appbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'choose_lang.dart';
+import 'package:flutter_translate/flutter_translate.dart';
+
 class SettingsPage extends StatefulWidget {
   static const String id="settings";
   const SettingsPage({Key? key}) : super(key: key);
@@ -35,7 +38,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Settings', implyLeading: false),
+      appBar: appBar(context: context, title:translate("setting.title"), implyLeading: false),
       body: Container(
         margin: EdgeInsets.all(16),
         child: SingleChildScrollView(
@@ -46,7 +49,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 leading: Icon(
                   Icons.face_outlined, color: MyColors.primaryColor,
                 ),
-                title: Text('My Coins', style: TextStyle(
+                title: Text(translate("setting.myCoins"), style: TextStyle(
                   color: MyColors.primaryColor,
                   fontSize: 16,
                   fontFamily: 'medium',
@@ -64,7 +67,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('Friends & Family', style: TextStyle(
+                    title: Text(translate("setting.friendFamily"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',
@@ -88,7 +91,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('Add Web Storage Token', style: TextStyle(
+                    title: Text(translate("setting.webToken"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',
@@ -109,7 +112,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 leading: Icon(
                   Icons.subscriptions_outlined, color: MyColors.primaryColor,
                 ),
-                title: Text('My Subscribed Channels', style: TextStyle(
+                title: Text(translate("setting.subscribed"), style: TextStyle(
                   color: MyColors.primaryColor,
                   fontSize: 16,
                   fontFamily: 'medium',
@@ -125,7 +128,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 leading: Icon(
                   Icons.subscriptions_outlined, color: MyColors.primaryColor,
                 ),
-                title: Text('My Private Channels', style: TextStyle(
+                title: Text(translate("setting.private"), style: TextStyle(
                   color: MyColors.primaryColor,
                   fontSize: 16,
                   fontFamily: 'medium',
@@ -142,7 +145,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 leading: Icon(
                   Icons.subscriptions_outlined, color: MyColors.primaryColor,
                 ),
-                title: Text('My Purchased Domains', style: TextStyle(
+                title: Text(translate("setting.domains"),
+
+                  style: TextStyle(
                   color: MyColors.primaryColor,
                   fontSize: 16,
                   fontFamily: 'medium',
@@ -159,7 +164,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 leading: Icon(
                   Icons.subscriptions_outlined, color: MyColors.primaryColor,
                 ),
-                title: Text('My Purchased Banners', style: TextStyle(
+                title: Text(translate("setting.banners"),
+
+                  style: TextStyle(
                   color: MyColors.primaryColor,
                   fontSize: 16,
                   fontFamily: 'medium',
@@ -176,7 +183,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 leading: Icon(
                   Icons.play_circle_outline_outlined, color: MyColors.primaryColor,
                 ),
-                title: Text('My Videos', style: TextStyle(
+                title: Text(translate("setting.videos"), style: TextStyle(
                   color: MyColors.primaryColor,
                   fontSize: 16,
                   fontFamily: 'medium',
@@ -195,7 +202,7 @@ class _SettingsPageState extends State<SettingsPage> {
                    leading: Icon(
                      Icons.subscriptions_outlined, color: MyColors.primaryColor,
                    ),
-                   title: Text('Make Payment For Banner', style: TextStyle(
+                   title: Text(translate("setting.payBannner"), style: TextStyle(
                      color: MyColors.primaryColor,
                      fontSize: 16,
                      fontFamily: 'medium',
@@ -217,7 +224,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('Make Payment For Domain', style: TextStyle(
+                    title: Text(translate("setting.payDomain"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',
@@ -239,7 +246,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('Rent a Banner', style: TextStyle(
+                    title: Text(translate("setting.rent"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',
@@ -263,7 +270,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('My Rented Banners', style: TextStyle(
+                    title: Text(translate("setting.myRent"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',
@@ -287,7 +294,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('VMail', style: TextStyle(
+                    title: Text(translate("setting.vmail"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',
@@ -306,7 +313,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 leading: Icon(
                   Icons.subscriptions_outlined, color: MyColors.primaryColor,
                 ),
-                title: Text('Community Court', style: TextStyle(
+                title: Text(translate("setting.court"), style: TextStyle(
                   color: MyColors.primaryColor,
                   fontSize: 16,
                   fontFamily: 'medium',
@@ -320,10 +327,27 @@ class _SettingsPageState extends State<SettingsPage> {
               Divider(indent: 65, height: 10, thickness: 0.5, color: MyColors.primaryColor,),
               vSizedBox,
               ListTile(
+                leading: Icon(
+                  Icons.subscriptions_outlined, color: MyColors.primaryColor,
+                ),
+                title: Text(translate("setting.lang"), style: TextStyle(
+                  color: MyColors.primaryColor,
+                  fontSize: 16,
+                  fontFamily: 'medium',
+                ),
+                ),
+                onTap: (){
+                  push(context: context, screen: ChooseLanguage());
+                },
+              ),
+
+              Divider(indent: 65, height: 10, thickness: 0.5, color: MyColors.primaryColor,),
+              vSizedBox,
+              ListTile(
                 leading:Icon(
                   Icons.delete_outlined, color: Colors.red,
                 ),
-                title: Text('Delete Account', style: TextStyle(
+                title: Text(translate("setting.deleteAccount"), style: TextStyle(
                   color: MyColors.primaryColor,
                   fontSize: 16,
                   fontFamily: 'medium',
@@ -344,7 +368,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('Terms & Conditions', style: TextStyle(
+                    title: Text(translate("setting.termsCondition"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',
@@ -366,7 +390,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('Privacy Policy', style: TextStyle(
+                    title: Text(translate("setting.privacy"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',
@@ -388,7 +412,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     leading: Icon(
                       Icons.subscriptions_outlined, color: MyColors.primaryColor,
                     ),
-                    title: Text('Copyrights', style: TextStyle(
+                    title: Text(translate("setting.copyRight"), style: TextStyle(
                       color: MyColors.primaryColor,
                       fontSize: 16,
                       fontFamily: 'medium',

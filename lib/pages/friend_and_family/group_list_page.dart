@@ -20,7 +20,7 @@ import 'package:ox21/widgets/customtextfield.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import '../../constants/colors.dart';
-
+import 'package:flutter_translate/flutter_translate.dart';
 class FriendsAndFamilyGroupListPage extends StatefulWidget {
   const FriendsAndFamilyGroupListPage({Key? key}) : super(key: key);
 
@@ -52,7 +52,7 @@ class _FriendsAndFamilyGroupListPageState extends State<FriendsAndFamilyGroupLis
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Friends And Family'),
+      appBar: appBar(context: context, title:translate("group_list_page.title")),
       floatingActionButton: FloatingActionButton(
         onPressed: () async{
 
@@ -87,7 +87,7 @@ class _FriendsAndFamilyGroupListPageState extends State<FriendsAndFamilyGroupLis
                         }
                       },
                       child: MainHeadingText(
-                          text: "Create Group"),
+                          text: translate("group_list_page.createGroup")),
                     ),
                     CustomDivider(),
                     vSizedBox,
@@ -132,14 +132,14 @@ class _FriendsAndFamilyGroupListPageState extends State<FriendsAndFamilyGroupLis
                                           children: [
                                             vSizedBox,
                                             MainHeadingText(
-                                                text: "Join ${jsonResponse['data']['title']}"),
+                                                text: "${translate("group_list_page.join")} ${jsonResponse['data']['title']}"),
                                             CustomDivider(),
                                             vSizedBox,
-                                            SubHeadingText(text: 'Nick Name'),
+                                            SubHeadingText(text: translate("group_list_page.nName")),
                                             vSizedBox,
-                                            CustomTextField(controller: nicknameController,hintText:  'This will be displayed as your name in this group'),
+                                            CustomTextField(controller: nicknameController,hintText:translate("group_list_page.text")),
                                             vSizedBox,
-                                            RoundEdgedButton(text: 'Join Group', onTap: ()async{
+                                            RoundEdgedButton(text: translate("group_list_page.joinGroup"), onTap: ()async{
                                               var request = {
                                                 'user_id': userId,
                                                 'groupID': result.code,
@@ -181,7 +181,7 @@ class _FriendsAndFamilyGroupListPageState extends State<FriendsAndFamilyGroupLis
                         }
                       },
                       child: MainHeadingText(
-                          text: "Join Group"),
+                          text: translate("group_list_page.joinGroup")),
                     ),
                     vSizedBox,
 
@@ -202,7 +202,7 @@ class _FriendsAndFamilyGroupListPageState extends State<FriendsAndFamilyGroupLis
       ),
       body: load?CustomLoader():Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
-        child:groupList.length==0?Center(child: ParagraphText(text: 'No Groups Found',textAlign: TextAlign.center,),):ListView.builder(
+        child:groupList.length==0?Center(child: ParagraphText(text: translate("group_list_page.noData"),textAlign: TextAlign.center,),):ListView.builder(
           itemCount: groupList.length,
           itemBuilder: (context,index){
             return GestureDetector(
