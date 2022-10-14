@@ -20,7 +20,7 @@ import 'package:intl/intl.dart';
 import '../widgets/appbar.dart';
 import '../widgets/buttons.dart';
 import 'my_subscribed_channels_page.dart';
-
+import 'package:flutter_translate/flutter_translate.dart';
 class SelectPageNumberPage extends StatefulWidget {
   Map<String,dynamic> request;
   SelectPageNumberPage({Key? key, required this.request}) : super(key: key);
@@ -30,7 +30,7 @@ class SelectPageNumberPage extends StatefulWidget {
 }
 
 class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
-  
+
   List bidders = [];
   List priceList = [];
   bool load = false;
@@ -40,7 +40,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
   int? selectedPageNumber;
 
 
-  
+
   getPriceList()async{
     setState(() {
       load = true;
@@ -50,19 +50,19 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
       load = false;
     });
   }
-  
+
   @override
   void initState() {
     // TODO: implement initState
-    
+
     getPriceList();
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:load?null: appBar(context: context, title: 'Top Banner Bid'),
+      appBar:load?null: appBar(context: context, title:translate("select_page_number_page.title")),
       body:load?CustomLoader(): Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
@@ -72,8 +72,8 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
               vSizedBox2,
               Row(
                 children: [
-                  ParagraphText(text: 'Channel Selected: '),
-                  SubHeadingText(text: widget.request['channelName']??'mm'),
+                  ParagraphText(text:translate("select_page_number_page.selectedChannel")),
+                  SubHeadingText(text: widget.request['channelName']??translate("select_page_number_page.mm")),
                 ],
               ),
               vSizedBox2,
@@ -94,7 +94,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SubHeadingText(text: 'Select Page Number:', fontSize: 12,),
+                    SubHeadingText(text: translate("select_page_number_page.selectPage"), fontSize: 12,),
                     hSizedBox,
                     Expanded(
                       child: ListView.builder(
@@ -141,7 +141,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                                   setState(() {
                                     load = false;
                                   });
-                                  showSnackbar(MyGlobalKeys.navigatorKey.currentContext!, 'This page number is not available in your region.');
+                                  showSnackbar(MyGlobalKeys.navigatorKey.currentContext!, translate("select_page_number_page.notAvailable"));
                                 }
 
                               }
@@ -185,7 +185,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         MainHeadingText(
-                          text: 'Pricing ',
+                          text: translate("select_page_number_page.pricing"),
                           color: MyColors.secondary,
                         ),
                         SubHeadingText(
@@ -200,7 +200,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                   Expanded(
                     child: RoundEdgedButton(
                       textColor: Colors.white,
-                      text: 'Purchase Now',
+                      text:translate("select_page_number_page.purchaseNow"),
                       color:selectedPricing==null?MyColors.inactiveButtonColor: MyColors.secondary,
                       fontSize: 12,
                       fontfamily: 'medium',
@@ -217,9 +217,9 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                             salt: MyGlobalConstants.passwordSalt);
                         Uuid uuid = Uuid();
 
-                       
+
                         String typedPhrase = uuid.v5(
-                            Uuid.NAMESPACE_URL, 'Fight for privacy! Fight for freedom');
+                            Uuid.NAMESPACE_URL,translate("select_page_number_page.fight"));
                         print(typedPhrase);
                         var request = {
                           "user_id": userId.toString(),
@@ -266,7 +266,7 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
                         if(jsonResponse['status'].toString()=='1'){
                           Navigator.popUntil(context, (route) => route.isFirst);
                           if(jsonResponse['data']['payment_status'].toString()=='1'){
-                            showSnackbar(context, 'Banner Purchased Successfully');
+                            showSnackbar(context, translate("select_page_number_page.successfully"));
                           }else{
                             push(context: MyGlobalKeys.navigatorKey.currentContext!, screen: CompleteTopBannerPaymentPage(purchaseData: jsonResponse['data']));
                           }
@@ -285,10 +285,10 @@ class _SelectPageNumberPageState extends State<SelectPageNumberPage> {
               ),
               vSizedBox2,
               CustomDivider(),
-              SubHeadingText(text: 'Top Bidders'),
+              SubHeadingText(text:translate("select_page_number_page.topBidders")),
               vSizedBox2,
               bidders.length==0?
-                  Center(child: ParagraphText(text: 'There are no bidders yet',),):
+                  Center(child: ParagraphText(text: translate("select_page_number_page.noBidder"),),):
               ListView.builder(
                 itemCount: bidders.length,
                 shrinkWrap: true,

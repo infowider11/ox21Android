@@ -6,6 +6,7 @@ import 'package:ox21/widgets/CustomTexts.dart';
 
 import '../constants/colors.dart';
 import '../widgets/appbar.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 List visibilityOptions = ['public', 'unlisted', 'private'];
 
@@ -44,7 +45,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
       backgroundColor: Color(0xFFeaedf6),
       appBar: appBar(
           context: context,
-          title: 'Set Visibility',
+          title: translate("set_visibility.setVisibility"),
           titleColor: MyColors.secondary,
           toolbarHeight: 50,
           actions: [
@@ -57,7 +58,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
                   ]);
                 },
                 child: SubHeadingText(
-                  text: 'Done',
+                  text: translate("set_visibility.done"),
                   color: MyColors.primaryColor,
                 ),
               ),
@@ -77,7 +78,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ParagraphText(
-                      text: 'Publish Now',
+                      text:translate("set_visibility.publishNow"),
                       fontSize: 16,
                     ),
                     vSizedBox2,
@@ -107,7 +108,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ParagraphText(
-                                text: 'Public',
+                                text: translate("set_visibility.Public"),
                                 color: MyColors.heading,
                                 fontSize: 14,
                                 fontFamily: 'regular',
@@ -116,7 +117,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
                                 height: 3,
                               ),
                               ParagraphText(
-                                text: 'Anyone can search for and view',
+                                text: translate("set_visibility.searchView"),
                                 color: MyColors.blackColor.withOpacity(0.5),
                                 fontSize: 12,
                                 fontFamily: 'light',
@@ -142,7 +143,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
                                     offset: Offset(-10, 0),
                                   ),
                                   ParagraphText(
-                                    text: 'Set as instent Premier',
+                                    text: translate("set_visibility.setPermier"),
                                     color: MyColors.heading,
                                     fontSize: 14,
                                     fontFamily: 'regular',
@@ -187,7 +188,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ParagraphText(
-                                text: 'Unlisted',
+                                text: translate("set_visibility.Unlisted"),
                                 color: MyColors.heading,
                                 fontSize: 14,
                                 fontFamily: 'regular',
@@ -196,7 +197,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
                                 height: 3,
                               ),
                               ParagraphText(
-                                text: 'Anyone with the link can view',
+                                text:translate("set_visibility.linkView"),
                                 color: MyColors.blackColor.withOpacity(0.5),
                                 fontSize: 12,
                                 fontFamily: 'light',
@@ -239,7 +240,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ParagraphText(
-                                text: 'Private',
+                                text:translate("set_visibility.private"),
                                 color: MyColors.heading,
                                 fontSize: 14,
                                 fontFamily: 'regular',
@@ -248,7 +249,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
                                 height: 3,
                               ),
                               ParagraphText(
-                                text: 'Only people you choose can view',
+                                text:translate("set_visibility.chooseView"),
                                 color: MyColors.blackColor.withOpacity(0.5),
                                 fontSize: 12,
                                 fontFamily: 'light',
@@ -276,7 +277,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ParagraphText(
-                          text: 'Schedule',
+                          text: translate("set_visibility.Schedule"),
                           fontSize: 16,
                         ),
                         Icon(
@@ -288,7 +289,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
                     ),
                     vSizedBox2,
                     ParagraphText(
-                      text: 'Publish as publc',
+                      text: translate("set_visibility.public"),
                       fontSize: 16,
                     ),
                     vSizedBox,
@@ -338,7 +339,7 @@ class _Set_visibility_PageState extends State<Set_visibility_Page> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ParagraphText(
-                          text: 'Video is private before publishing',
+                          text: translate("set_visibility.privateVideo"),
                           color: MyColors.blackColor.withOpacity(0.5),
                           fontSize: 12,
                           fontFamily: 'light',

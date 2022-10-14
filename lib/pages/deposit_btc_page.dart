@@ -16,7 +16,7 @@ import 'package:ox21/widgets/custom_snackbar.dart';
 import 'package:ox21/widgets/customtextfield.dart';
 
 import 'deposit_btc_qr_page.dart';
-
+import 'package:flutter_translate/flutter_translate.dart';
 class DepositBtcPage extends StatefulWidget {
   static const String id = 'btc_send_page';
   const DepositBtcPage({Key? key}) : super(key: key);
@@ -37,7 +37,7 @@ class _DepositBtcPageState extends State<DepositBtcPage> {
     return Scaffold(
       appBar: appBar(
           context: context,
-          title: 'Deposit BTC',
+          title: translate("deposit_btc_page.depositeBtc"),
 
       ),
       body:load?CustomLoader(): Container(
@@ -84,7 +84,7 @@ class _DepositBtcPageState extends State<DepositBtcPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SubHeadingText(text: 'Transfer Amount'),
+                      SubHeadingText(text:translate("deposit_btc_page.transferAmonut")),
                       Row(
                         children: [
                           Image.asset(
@@ -92,13 +92,13 @@ class _DepositBtcPageState extends State<DepositBtcPage> {
                             height: 20,
                             fit: BoxFit.fitHeight,
                           ),
-                          SubHeadingText(text: 'BTC')
+                          SubHeadingText(text: translate("deposit_btc_page.btc"))
                         ],
                       )
                     ],
                   ),
                   vSizedBox,
-                  CustomTextField(controller: transferAmountController, hintText: 'Enter Amount', keyboardType: TextInputType.number,),
+                  CustomTextField(controller: transferAmountController, hintText: translate("deposit_btc_page.enterAmount"), keyboardType: TextInputType.number,),
 
                   vSizedBox2,
                 ],
@@ -117,14 +117,14 @@ class _DepositBtcPageState extends State<DepositBtcPage> {
                       children: [
                         Expanded(
                             child: RoundEdgedButton(
-                              text: 'Confirm',
+                              text: translate("deposit_btc_page.confirm"),
                               color: MyColors.secondary,
                               // color: Colors.grey.shade300,
                               // textColor: Colors.grey,
                               textColor: Colors.white,
                               onTap: ()async{
                                if(transferAmountController.text==''){
-                                 showSnackbar(context, 'Please type a amount to continue');
+                                 showSnackbar(context, translate("deposit_btc_page.typeAmount"));
                                }else{
                                  setState(() {
                                    load = true;

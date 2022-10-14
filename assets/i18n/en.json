@@ -425,20 +425,184 @@
     "createPrivateChannel": "Create your Private Channel",
     "buy": "Buy Freshness Points for your postfreshness",
     "noFreshness": "No Freshness",
-    "noPlayList": "No Playlist Found",
+    "noPlayList": "No Playlist Found"
   },
-  "add_screenshot": {
-    "":"Add Screenshot",
-    "":"",
-    "":"",
-    "":"",
-    "":"",
-    "": "",
+  "community_court_page": {
+    "title": "Community Court",
+    "noData": "No Videos Found",
+    "by": "By",
+    "allow": "Allow",
+    "deny": "Deny",
+    "voted": "You have voted on this post",
+    "giveVote": "Give your vote"
+  },
+  "create_new_password": {
+    "createPass": "Create a new Password",
+    "passStrength": "Password strength: ",
+    "changePass": "Change Password",
+    "typeStrongPass": "Please type the strong password",
+    "confirmPass": "Confirm password does not match",
     "": ""
   },
-  "add_to_cart": {},
-  "btc_send_page": {},
-  "buy_refreshment_page": {},
-  "cash_coins_page": {},
-  "community_court_page": {}
+  "deposit_btc_page": {
+    "depositeBtc": "Deposit BTC",
+    "transferAmonut": "Transfer Amount",
+    "enterAmount": "Enter Amount",
+    "confirm": "Confirm",
+    "typeAmount": "Please type a amount to continue",
+    "btc":"BTC"
+  },
+  "deposit_btc_qr_page": {
+    "scanPay": "Scan this code to complete your Payment",
+    "orderCreated": "Your btc deposit order has been created",
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds left",
+    "day": "day",
+    "purchaseOut": "Purchase timeout.",
+    "orderId": "ORDER ID:",
+    "cost": " COST:",
+    "Qrpay": "QR code use for payment",
+    "btc":"BTC",
+    "strongNote": "Strong Note",
+    "text3": "This code will expire on ",
+    "text4": "the order id will expire in 48 hours",
+    "text5": "When the orderID expires, the message will show the QR code is no longer valid.",
+    "close": "Close"
+
+  },
+  "domain_purchase_successful": {
+    "domain": "Domain",
+    "domainName": "Domain Name: ",
+    "successfully": "Domain Purchased Successfully",
+    "check": "Check Your Purchased Domains",
+    "goToHome": "Go to Home Page"
+  },
+  "search_domain_page": {
+    "availableName": "Name Available to Purchase",
+    "purchaseFor": "Purchase for",
+    "ox21Coin": "OX21 Coin",
+    "inSufficient": "You don't have sufficient coins to purchase this banner.",
+    "purchaseBtc": "Purchase with BTC",
+    "purchaseJin": "Purchase with JIN",
+    "domain": "Domain",
+    "domainName":"Domain Nmae :"
+
+  },
+  "select_audience": {
+    "selectedAudience": "Select audience",
+    "isKids": "Is this video made for kids?",
+    "regardless": "regardless of your location, you're legally required to comply with the ",
+    "COPPA": "children\\'s Online Privacy Protection Act (COPPA)",
+    "text2": "and/or other laws. you\\'re required to tell us whether your videos are made for kids",
+    "yesIsKids": "Yes It\\'s made for kids",
+    "noIsKids": "No, It\\'s not made for kids",
+    "age": "Age Restriction (advanced)",
+    "restrict": "Do you want to restrict your video to an adult audience?",
+    "restrictAge": "Age restricted videos are not shown in certain areas of youtube. these video may have limited or no ads monetization",
+    "yesAge": "Yes, restrict my video to over 18",
+    "noAge": "No, don\\'t restrict my video to viewers over 18",
+    "upload": "UPLOAD VIDEO"
+
+
+  },
+  "select_page_number_page": {
+    "title": "Top Banner Bid",
+    "selectedChannel": "Channel Selected: ",
+    "mm": "mm",
+    "selectPage": "Select Page Number:",
+    "notAvailable": "This page number is not available in your region.",
+    "pricing": "Pricing ",
+    "purchaseNow": "Purchase Now",
+    "fight": "Fight for privacy! Fight for freedom",
+    "successfully": "Banner Purchased Successfully",
+    "topBidders": "Top Bidders",
+    "noBidder": "There are no bidders yet",
+    "": ""
+
+  },
+  "set_visibility": {
+    "setVisibility": "Set Visibility",
+    "publishNow": "Publish Now",
+    "Public": "Public",
+    "searchView": "Anyone can search for and view",
+    "setPermier": "Set as instent Premier",
+    "Unlisted": "Unlisted",
+    "linkView": "Anyone with the link can view",
+    "private": "Private",
+    "chooseView": "Only people you choose can view",
+    "Schedule": "Schedule",
+    "public": "Publish as public",
+    "privateVideo": "Video is private before publishing",
+    "done":"Done"
+  },
+  "cart": {
+    "smallAount": "We can\\'t process small amount in Btc payments",
+    "yourCart": "Your Cart",
+    "items": "Items",
+    "domainName": "Domain Name :",
+    "USD": "USD",
+    "totalPrice": "Total Price  ",
+    "myOX21": "In MyOX21 Coins: ",
+    "confirm": "Confirm",
+    "jin":"JIN"
+
+  },
+  "vmail_detail_page": {
+    "text": "This domain will not be able to send you mails again.",
+    "attachments": "Attachments",
+    "noAttachments": "No attachments found",
+    "forwarded": "Forwarded",
+    "replied": "Replied To",
+    "vmail":"Vmails",
+    "RUS":"Are you sure ?",
+    "no":"NO",
+    "yes":"Yes"
+
+  },
+  "select_language": {
+    "selectLang": "Select Language ",
+    "searchInLang": "Search in languages",
+    "noData": "No Languages Found",
+    "continueBtn": "Continue"
+  },
+  "top_banner_bid_chennels": {
+    "title": "Top Banner Bid",
+    "searchChannel": "Search in Channels",
+    "noData": "No Channels Found",
+    "continue":"Continue"
+  },
+  "top_banner_bid_country": {
+    "title": "Top Banner Purchase/Bid",
+    "selectLocation": "Select Location",
+    "skip": "Skip",
+    "selectText":"Select City, Province, Country",
+    "continueBtn": "Continue"
+  },
+  "upload_video_view": {
+    "next": "Next"
+  },
+  "walletpage": {
+    "investment": "Investment",
+    "depositBTC": "Deposit BTC",
+    "text": "11PEEokWFSFNYshLfuLvZfMuPE93aMJd4",
+    "domainTrade": "Domain Trade",
+    "searchDomain": "Search Domain",
+    "somethingWrong": "Something went wrong.",
+    "tradeDomain": "Trade Domain",
+    "tradeDomainWith": "Trade Domain with",
+    "topBanner": "Top Banner Trade",
+    "tradeTopBanner": "Trade Top Banner with BTC",
+    "walletBalance": "Wallet Balance",
+    "btc": "BTC",
+    "jin": "JIN",
+    "points":"Points",
+    "": "",
+    "": ""
+  }
+
+
+
+
+
 }

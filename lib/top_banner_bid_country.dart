@@ -14,7 +14,7 @@ import 'constants/colors.dart';
 import 'constants/global_constants.dart';
 import 'constants/image_urls.dart';
 import 'constants/sized_box.dart';
-
+import 'package:flutter_translate/flutter_translate.dart';
 class TopBannerBidCountryPage extends StatefulWidget {
   // static const String id="contry";
   Map<String, dynamic> request;
@@ -39,7 +39,7 @@ class _TopBannerBidCountryPageState extends State<TopBannerBidCountryPage> {
       appBar: load
           ? null
           :  appBar(context: context,
-         title: 'Top Banner Purchase/Bid', titleColor: MyColors.primaryColor
+         title:translate("walletpage.title"), titleColor: MyColors.primaryColor
       ),
       body:load
           ? CustomLoader()
@@ -55,7 +55,7 @@ class _TopBannerBidCountryPageState extends State<TopBannerBidCountryPage> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: ParagraphText(text: 'Select Location',
+                      child: ParagraphText(text:translate("walletpage.selectLocation"),
                         fontSize: 18,
                         fontFamily: 'bold',
                       ),
@@ -67,7 +67,7 @@ class _TopBannerBidCountryPageState extends State<TopBannerBidCountryPage> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(right: 16),
-                        child: SubHeadingText(text: 'Skip',color: MyColors.primaryColor,),
+                        child: SubHeadingText(text: translate("walletpage.skip"),color: MyColors.primaryColor,),
                       ),
                     )
                   ],
@@ -80,7 +80,7 @@ class _TopBannerBidCountryPageState extends State<TopBannerBidCountryPage> {
                     apiKey: MyGlobalConstants.kGoogleApiKey,
                     height: 36,
                     placeType: PlaceType.cities,
-                    placeholder: 'Select City, Province, Country',
+                    placeholder: translate("walletpage.selectText"),
                     onSelected: (place) {
                       print('the place is ${place.fullJSON}');
                       List data = place.fullJSON['description']
@@ -166,7 +166,7 @@ class _TopBannerBidCountryPageState extends State<TopBannerBidCountryPage> {
               children: [
 
                 RoundEdgedButton(
-                  text: 'Continue',
+                  text: translate("walletpage.continueBtn"),
                   textColor: Colors.white,
                   color:cityValue==null?MyColors.inactiveButtonColor: MyColors.primaryColor,
                   borderRadius: 12,

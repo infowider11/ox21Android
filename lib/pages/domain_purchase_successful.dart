@@ -13,7 +13,7 @@ import 'package:ox21/widgets/custom_snackbar.dart';
 import 'package:ox21/widgets/customtextfield.dart';
 
 import '../constants/global_functions.dart';
-
+import 'package:flutter_translate/flutter_translate.dart';
 class DomainPurchaseSuccessfulPage extends StatefulWidget {
   static const String id = 'domain_purchase_successfull_page';
   final Map<String, dynamic> domainData;
@@ -53,7 +53,7 @@ class _DomainPurchaseSuccessfulPageState extends State<DomainPurchaseSuccessfulP
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Domain'),
+      appBar: appBar(context: context, title:translate("domain_purchase_successful.domain")),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
@@ -88,7 +88,7 @@ class _DomainPurchaseSuccessfulPageState extends State<DomainPurchaseSuccessfulP
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SubHeadingText(
-                    text: 'Domain Name: ${widget.domainData['domain']}',
+                    text: '${translate("domain_purchase_successful.domainName")} ${widget.domainData['domain']}',
                   ),
                   vSizedBox,
                   Image.asset(
@@ -97,10 +97,10 @@ class _DomainPurchaseSuccessfulPageState extends State<DomainPurchaseSuccessfulP
                     fit: BoxFit.fitHeight,
                   ),
                   vSizedBox,
-                  ParagraphText(text: 'Domain Purchased Successfully'),
+                  ParagraphText(text: translate("domain_purchase_successful.successfully")),
                   vSizedBox2,
                   RoundEdgedButton(
-                    text: 'Check Your Purchased Domains',
+                    text: translate("domain_purchase_successful.check"),
                     textColor: Colors.white,
                     color: MyColors.secondary,
                     fontfamily: 'medium',
@@ -110,7 +110,7 @@ class _DomainPurchaseSuccessfulPageState extends State<DomainPurchaseSuccessfulP
                   ),
                   vSizedBox2,
                   RoundEdgedButton(
-                    text: 'Go to Home Page',
+                    text: translate("domain_purchase_successful.goToHome"),
                     isSolid: false,
                     textColor: Colors.white,
                     color: MyColors.secondary,

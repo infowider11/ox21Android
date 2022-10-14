@@ -10,6 +10,7 @@ import 'package:ox21/pages/add_detail.dart';
 import 'package:ox21/widgets/appbar.dart';
 import 'package:ox21/widgets/buttons.dart';
 import 'package:video_player/video_player.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class UploadPageView extends StatefulWidget {
   static const String id = "upload_img_view";
@@ -54,7 +55,7 @@ class _UploadPageViewState extends State<UploadPageView> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               RoundEdgedButton(
-                text: 'NEXT',
+                text:translate("walletpage.next"),
                 textColor: MyColors.whiteColor,
                 color: MyColors.secondary,
                 width: 65,

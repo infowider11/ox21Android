@@ -12,7 +12,7 @@ import 'package:ox21/widgets/custom_snackbar.dart';
 import 'package:ox21/widgets/customtextfield.dart';
 
 import '../constants/global_functions.dart';
-
+import 'package:flutter_translate/flutter_translate.dart';
 class SearchDomainPage extends StatefulWidget {
   static const String id = 'search_domain_page';
   final Map<String, dynamic> domainData;
@@ -51,7 +51,7 @@ class _SearchDomainPageState extends State<SearchDomainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context: context, title: 'Domain'),
+      appBar: appBar(context: context, title: translate("search_domain_page.domain")),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
@@ -83,7 +83,7 @@ class _SearchDomainPageState extends State<SearchDomainPage> {
               child: Column(
                 children: [
                   SubHeadingText(
-                    text: 'Domain Name: ${widget.domainData['domain']}',
+                    text: '${translate("search_domain_page.domainName")} ${widget.domainData['domain']}',
                   ),
                   vSizedBox,
                   Image.asset(
@@ -92,16 +92,16 @@ class _SearchDomainPageState extends State<SearchDomainPage> {
                     fit: BoxFit.fitHeight,
                   ),
                   vSizedBox,
-                  ParagraphText(text: 'Name Available to Purchase'),
+                  ParagraphText(text: translate("search_domain_page.availableName")),
                   vSizedBox2,
                   RoundEdgedButton(
-                    text: 'Purchase for ${totalCost.toStringAsFixed(0)} OX21 Coin',
+                    text: '${translate("search_domain_page.purchaseFor")} ${totalCost.toStringAsFixed(0)} ${translate("search_domain_page.ox21Coin")}',
                     textColor: Colors.white,
                     color: MyColors.secondary,
                     fontfamily: 'medium',
                     onTap: () {
                       if(totalCost>coins){
-                        showSnackbar(context, 'You don\'t have sufficient coins to purchase this banner.');
+                        showSnackbar(context, translate("search_domain_page.inSufficient"));
                       }
                       else{
                         push(
@@ -130,7 +130,7 @@ class _SearchDomainPageState extends State<SearchDomainPage> {
                   //   },
                   // )
                   RoundEdgedButton(
-                    text: 'Purchase with BTC',
+                    text: translate("search_domain_page.purchaseBtc"),
                     textColor: Colors.white,
                     isSolid: false,
                     color: MyColors.secondary,
@@ -171,7 +171,7 @@ class _SearchDomainPageState extends State<SearchDomainPage> {
                   // ),
                   vSizedBox2,
                   RoundEdgedButton(
-                    text: 'Purchase with JIN',
+                    text: translate("search_domain_page.purchaseJin"),
                     textColor: Colors.white,
                     color: MyColors.secondary,
                     fontfamily: 'medium',

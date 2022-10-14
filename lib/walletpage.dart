@@ -25,6 +25,7 @@ import 'package:ox21/widgets/customtextfield.dart';
 
 import 'constants/colors.dart';
 import 'constants/image_urls.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 
 class WalletPage extends StatefulWidget {
   static const String id = "wallet";
@@ -73,7 +74,7 @@ class _WalletPageState extends State<WalletPage> {
       backgroundColor: MyColors.backcolor,
       appBar: appBar(
         context: context,
-        title: 'Investment',
+        title:translate("walletpage.investment"),
         fontfamily: 'bold',
         implyLeading: false,
         titleColor: MyColors.primaryColor,
@@ -214,8 +215,8 @@ class _WalletPageState extends State<WalletPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SubHeadingText(text: 'Wallet Balance'),
-                        SubHeadingText(text: '${double.parse(userData!['btc_wallet'].toString()).toStringAsFixed(2)} BTC', color: MyColors.primaryColor,),
+                        SubHeadingText(text: translate("walletpage.walletBalance")),
+                        SubHeadingText(text: '${double.parse(userData!['btc_wallet'].toString()).toStringAsFixed(2)} ${translate("walletpage.btc")}', color: MyColors.primaryColor,),
                       ],
                     )
                   ],
@@ -280,7 +281,7 @@ class _WalletPageState extends State<WalletPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SubHeadingText(text: 'JIN'),
+                                SubHeadingText(text: translate("walletpage.jin")),
                                 vSizedBox05,
                                 ParagraphText(text: '${double.parse(userData!['jin_wallet'].toString()).toStringAsFixed(0)} JIN', color: MyColors.black54Color,),
                               ],
@@ -293,7 +294,7 @@ class _WalletPageState extends State<WalletPage> {
                               children: [
                                 SubHeadingText(text: '1.00 BTC'),
                                 vSizedBox05,
-                                ParagraphText(text: '≈${(double.parse(btcConversionPrice)/6).toStringAsFixed(2)} JIN', color: MyColors.black54Color,),
+                                ParagraphText(text: '≈${(double.parse(btcConversionPrice)/6).toStringAsFixed(2)} ${translate("walletpage.jin")}', color: MyColors.black54Color,),
                               ],
                             )
                         ),
@@ -326,7 +327,7 @@ class _WalletPageState extends State<WalletPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SubHeadingText(text: 'Points'),
+                              SubHeadingText(text: translate("walletpage.points")),
                               vSizedBox05,
                               ParagraphText(text: '${userData!['points']}', color: MyColors.black54Color,),
                             ],
@@ -356,9 +357,9 @@ class _WalletPageState extends State<WalletPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SubHeadingText(text: 'Deposit BTC'),
+                    SubHeadingText(text: translate("walletpage.depositBTC")),
                     vSizedBox2,
-                    ParagraphText(text: '11PEEokWFSFNYshLfuLvZfMuPE93aMJd4'),
+                    ParagraphText(text: translate("walletpage.text")),
                     vSizedBox2,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -368,7 +369,7 @@ class _WalletPageState extends State<WalletPage> {
                             child: Column(
                               children: [
                                 RoundEdgedButton(
-                                  text: 'Deposit BTC',
+                                  text: translate("walletpage.depositBTC"),
                                   color: MyColors.secondary,
                                   textColor: Colors.white,
                                   fontSize: 11,
@@ -408,12 +409,12 @@ class _WalletPageState extends State<WalletPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SubHeadingText(text: 'Domain Trade'),
+                    SubHeadingText(text: translate("walletpage.domainTrade")),
                     vSizedBox,
                     CustomTextFieldlabel(
                       controller: searchDomainController,
-                      hintText: 'Search Domain',
-                      labeltext: 'Search Domain',
+                      hintText: translate("walletpage.searchDomain"),
+                      labeltext: translate("walletpage.searchDomain"),
                       icon: Icons.search,
                       suffixIconButton:!domainSearchLoad?
                       null
@@ -475,11 +476,11 @@ class _WalletPageState extends State<WalletPage> {
                             domainData = null;
                           }catch(e){
                             print('Error in catch block 453 $e');
-                            domainErrorMessage = 'Something went wrong.';
+                            domainErrorMessage = translate("walletpage.somethingWrong");
                           }
 
                         }else{
-                          domainErrorMessage = 'Something went wrong.';
+                          domainErrorMessage = translate("walletpage.somethingWrong");
                         }
                         setState(() {
                           domainSearchLoad = false;
@@ -497,7 +498,7 @@ class _WalletPageState extends State<WalletPage> {
                     Row(
                       children: [
                         Expanded(
-                            child: RoundEdgedButton(text:!(isDomainValid && domainData!=null)? 'Trade Domain':'Trade Domain with ${domainData!['jinCost']} JIN',
+                            child: RoundEdgedButton(text:!(isDomainValid && domainData!=null)?translate("walletpage.tradeDomain"):'${translate("walletpage.tradeDomainWith")} ${domainData!['jinCost']} ${translate("walletpage.jin")}',
                              color:!(isDomainValid && domainData!=null)?isDomainPaymentPending?MyColors.secondary: MyColors.grey.withOpacity(0.2): MyColors.secondary,
                               textColor: Colors.white,
                               fontSize: 12,
@@ -538,7 +539,7 @@ class _WalletPageState extends State<WalletPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SubHeadingText(text: 'Top Banner Trade'),
+                    SubHeadingText(text:translate("walletpage.topBanner")),
                     // vSizedBox,
                     // CustomTextFieldlabel(controller: bannerTradeController, hintText: 'Search Channel', labeltext: 'Search Channel', icon: Icons.search,),
                     vSizedBox,
@@ -559,7 +560,7 @@ class _WalletPageState extends State<WalletPage> {
                         // hSizedBox,
                         Expanded(
                             child: RoundEdgedButton(
-                              text: 'Trade Top Banner with BTC',
+                              text:translate("walletpage.tradeTopBanner"),
                               color: MyColors.secondary,
                               textColor: Colors.white,
                               fontSize: 12,
